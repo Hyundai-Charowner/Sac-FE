@@ -1,30 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <body>
-        <h1> Hello World </h1>
-        <p>This is a <strong style={{ fontWeight: 'bold' }}>boldText</strong></p>
-        <p> This is a paragraph</p>
-      </body>
-    </div>
-  );
+    return (
+        <div className="h-max">
+            <p>안녕하세요</p>
+            <p className="font-bold">두꺼운 폰트</p>
+            <p className="text-lime-900">색깔있는 폰트</p>
+            <br/>
+            <p className="text-lime-900 text-8xl">크기가 큰 폰트</p>
+        </div>
+
+    );
 }
 
 export default App;
