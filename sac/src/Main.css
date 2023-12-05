@@ -13,7 +13,7 @@
 @font-face {
   font-family: 'Pretendard';
   src: url('./assets/fonts/pretendard_bold.otf') format('opentype');
-  
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
