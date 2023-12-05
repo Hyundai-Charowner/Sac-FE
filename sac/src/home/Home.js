@@ -1,5 +1,6 @@
 import Header from '../commons/Header';
 import LeftNavi from './LeftNavi';
+import './Home.css';
 
 function App() {
     return (
