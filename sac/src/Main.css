@@ -13,13 +13,22 @@
 @font-face {
   font-family: 'Pretendard';
   src: url('./assets/fonts/pretendard_bold.otf') format('opentype');
-  font-weight: bold;
+  
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('./assets/fonts/pretendard_semibold.otf') format('opentype');
+  font-weight: semibold;
   font-style: normal;
   font-display: swap;
 }
 
 body {
   line-height: 1;
+  background-color: #F2F2F2;
   /* 폰트 패밀리를 지정합니다. */
   font-family:
           'Pretendard',
