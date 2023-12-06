@@ -1,5 +1,5 @@
 import React from "react";
-import "./LeftNavi.css";
+import "../../../styles/LeftNavi.css";
 
 const topics = ["프론트엔드", "백엔드", "맛집", "전자기기", "축구", "영화", "건강", "문화생활", "뷰티", "음주", "연애", "예능", "드라마"];
 

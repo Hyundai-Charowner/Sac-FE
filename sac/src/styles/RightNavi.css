@@ -33,7 +33,7 @@
 .box-body {
     width: 100%;
     height: auto;
-    padding: 12px 1rem;
+    padding: 4px;
     flex-direction: column;
     background-color: white;
     border-radius: 16px;
@@ -42,32 +42,79 @@
 .body-item {
     width: 100%;
     display: flex;
-    padding: 8px 0;
+    padding: 10px 0.5rem;
     align-items: center;
     border-radius: 16px;
 }
+.body-item:hover {
+    background-color: #F2F2F2;
+    cursor: pointer;
+}
 
 .body-item-rank {
-    font-size: 16px;
+    color: #8E8E8E;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .body-item-icon {
     margin-left: 0.75rem;
-    margin-right: 0.2rem;
+    margin-right: 0.25rem;
     font-size: 14px;
 }
 
 .body-item-text {
-    font-size: 15px;
+    font-size: 14px;
+}
+
+.body-more-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0.3rem;
+    margin-top: 4px;
 }
 
 .body-item-more {
     width: 100%;
     font-size: 14px;
-    color: #F0EEFF;
-    margin: auto;
+    padding: 4px 0.5rem;
+    margin-bottom: 4px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     color: #6D55FF;
     background-color: #F0EEFF;
     border-radius: 14px;
+    transition: box-shadow 0.3s;
+}
+
+.body-item-more:hover {
+    box-shadow: 0 0 0 3px #B5A4E7;
+    cursor: pointer;
+}
+
+
+
+.body-inquiry {
+    width: 100%;
+    display: flex;
+    padding: 8px 0.5rem;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.inquiry-text {
+    font-size: 14px;
+    color: #8E8E8E;
+    margin-left: 0.5rem;
+}
+
+.inquiry-icon {
+    font-size: 14px;
+}
+
+.body-inquiry:hover{
+    background-color: #F2F2F2;
+    cursor: pointer;
 }
