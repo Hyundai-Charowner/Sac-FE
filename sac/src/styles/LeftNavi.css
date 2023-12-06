@@ -1,0 +1,61 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.left-navi {
+    width: 13.125rem;
+    height: auto;
+    background-color: white;
+    border-radius: 16px;
+    padding: 8px;
+
+}
+
+.topic-head {
+    width: 100%;
+    padding : 8px 0.5rem;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.topic-head-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 0.25rem;
+}
+
+.topic-head-icon {
+    font-size: 12px;
+}
+
+
+.topic-list {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+
+.topic-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 1rem;
+    border-radius: 16px;
+}
+
+.topic-item:hover {
+    background-color: #F2F2F2;
+    cursor: pointer;
+}
+
+.topic-item-text {
+    font-size: 15px;
+    margin-left: 4px;
+    color: #707070;
+}
+
+.topic-item-icon {
+    font-size: 12px;
+}
+
