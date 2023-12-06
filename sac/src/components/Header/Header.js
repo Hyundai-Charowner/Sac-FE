@@ -1,6 +1,6 @@
-import logo from '../assets/image/logo.png';
+import logo from '../../assets/image/logo.png';
 import React, { useState } from 'react';
-import searchIcon from '../assets/image/search.png';
+import searchIcon from '../../assets/image/search.png';
 import './Header.css';
 
 

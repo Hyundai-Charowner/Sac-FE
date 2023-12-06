@@ -1,5 +1,6 @@
-import Header from '../commons/Header';
-import LeftNavi from './LeftNavi';
+import Header from '../components/Header/Header';
+import LeftNavi from '../components/Navi/LeftNavi/LeftNavi';
+import RightNavi from '../components/Navi/RightNavi/RightNavi';
 import './Home.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
             </div>
             <div className="body">
                 <LeftNavi />
+                <RightNavi />
             </div>
         </div>
         
