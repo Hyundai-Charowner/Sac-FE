@@ -15,7 +15,7 @@ function App() {
             <div className="body">
                 <LeftNavi className="navi"/>
                 <div className="main">
-                    <PostDetail />
+                    <Post />
                 </div>
                 <RightNavi className="navi"/>
             </div>

@@ -32,7 +32,6 @@ function Header() {
                     <p className='etc-work'>토픽 둘러보기</p>
                     <p className='etc-work'>MY 토픽</p>
                     <p className='etc-work'>새싹 홈</p>
-                    <div className="divider"></div>
                     <button className='login-button'>로그인</button>
                 </div>
             </div>
