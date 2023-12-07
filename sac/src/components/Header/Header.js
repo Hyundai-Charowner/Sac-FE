@@ -15,7 +15,7 @@ function Header() {
         <div className="header">
             <div className="header-container">
                 <div className="header-left">
-                    <img src={logo} alt="Logo" className="logo" />
+                    <a href='/'><img src={logo} alt="Logo" className="logo" /></a>
                     <div className="search-container">
                         <img src={searchIcon} alt="Search Icon" className="search-icon" />
                         <input

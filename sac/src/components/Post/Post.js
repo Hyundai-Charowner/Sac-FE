@@ -4,13 +4,17 @@ import Body from './PostBody';
 import Footer from './PostFooter';
 import '../../styles/Post.css';
 
-const Post = ({ imageUrl, username, timestamp, topic, title, content, commentCount, heartCount, viewsCount }) => {
+const Post = ({ imageUrl, username, timestamp, topic, title, content, commentCount, heartCount, viewsCount, onClick }) => {
+    const handleClick = () => {
+        if (onClick) {
+            onClick();
+        }
+    };
+
     return (
-        <div className='post'>
+        <div className='post' onClick={handleClick}>
             <Header imageUrl={imageUrl} username={username} timestamp={timestamp} topic={topic} />
-
             <Body title={title} content={content} />
-
             <Footer commentCount={commentCount} heartCount={heartCount} viewsCount={viewsCount} />
         </div>
     );
