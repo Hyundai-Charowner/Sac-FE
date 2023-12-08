@@ -6,6 +6,7 @@ import RightNavi from '../components/Navi/RightNavi/RightNavi';
 import Post from '../components/Post/Post';
 import PostDetail from '../components/Post/PostDetail'; // PostDetail 컴포넌트 추가
 import '../styles/Home.css';
+import GoogleLogInButton from '../components/Login/GoogleLogInButton';
 
 function App() {
     const [isPostDetailOpen, setIsPostDetailOpen] = useState(false);
@@ -71,6 +72,9 @@ function App() {
                 <div className='navi'>
                     <RightNavi />
                 </div>
+            </div>
+            <div className="footer">
+                <GoogleLogInButton />
             </div>
         </div>
     );

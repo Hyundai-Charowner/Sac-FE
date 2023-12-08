@@ -1,5 +1,5 @@
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import sendOAuthDataToServer from "../utils/SendOAuthDataToServer";
+import sendOAuthDataToServer from "../../utils/SendOAuthDataToServer";
 
 function GoogleLogInButton() {
   return (

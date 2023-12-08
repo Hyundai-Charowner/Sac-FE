@@ -1,11 +1,18 @@
 import logo from '../../assets/image/logo.png';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import searchIcon from '../../assets/image/search.png';
 import '../../styles/Header.css';
-
+import UserInfo from '../User/UserInfo';
 
 function Header() {
     const [searchText, setSearchText] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        // localStorage에서 loginSession 확인
+        const loginSession = localStorage.getItem('loginSession');
+        setIsLoggedIn(!!loginSession); // loginSession이 존재하면 true, 아니면 false로 설정
+    }, []);
 
     const handleSearchChange = (event) => {
         setSearchText(event.target.value);
@@ -28,11 +35,17 @@ function Header() {
                     </div>
                 </div>
                 <div className="header-right">
-                    <p className='etc-work'>사이트 소개</p>
-                    <p className='etc-work'>토픽 둘러보기</p>
-                    <p className='etc-work'>MY 토픽</p>
-                    <p className='etc-work'>새싹 홈</p>
-                    <button className='login-button'>로그인</button>
+                    <div className="etc">
+                        <p className='etc-work'>사이트 소개</p>
+                        <p className='etc-work'>토픽 둘러보기</p>
+                        <p className='etc-work'>MY 토픽</p>
+                        <p className='etc-work'>새싹 홈</p>
+                    </div>
+                    {isLoggedIn ? (
+                        <UserInfo />
+                    ) : (
+                        <button className='login-button'>로그인</button>
+                    )}
                 </div>
             </div>
         </div>
@@ -40,4 +53,3 @@ function Header() {
 }
 
 export default Header;
-
