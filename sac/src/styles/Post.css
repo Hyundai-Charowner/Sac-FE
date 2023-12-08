@@ -78,11 +78,12 @@
     justify-content: space-between;
 }
 
-.post-comment-button {
+.post-button {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 .footer-icon {
     margin-right: 0.25rem;
