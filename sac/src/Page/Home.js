@@ -29,7 +29,7 @@ function App() {
             left: "0",
         },
         content: {
-            width: "60rem",
+            width: "fit-content",
             height: "fit-content",
             padding: "2rem 5rem",
             zIndex: "999",
@@ -66,7 +66,6 @@ function App() {
                         style={customModalStyles}
                     >
                         <PostDetail />
-                        <button onClick={closePostDetailModal}>닫기</button>
                     </Modal>
                 </div>
                 <div className='navi'>
