@@ -12,9 +12,11 @@ const Post = ({ imageUrl, username, timestamp, topic, title, content, commentCou
     };
 
     return (
-        <div className='post' onClick={handleClick}>
-            <Header imageUrl={imageUrl} username={username} timestamp={timestamp} topic={topic} />
-            <Body title={title} content={content} />
+        <div className='post' >
+            <div className='post_click' onClick={handleClick}>
+                <Header imageUrl={imageUrl} username={username} timestamp={timestamp} topic={topic} />
+                <Body title={title} content={content} />
+            </div>
             <Footer commentCount={commentCount} heartCount={heartCount} viewsCount={viewsCount} />
         </div>
     );
