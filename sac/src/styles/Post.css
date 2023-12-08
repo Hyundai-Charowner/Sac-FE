@@ -30,15 +30,19 @@
     flex-direction: row;
 }
 
-.post-contents {
+.post-body {
     width: 100%;
     padding: 12px 1rem;
     display: flex;
     flex-direction: column;
 }
 
-.post-usernaem {
+.post-username {
+    display: flex;
     font-size: 14px;
+    flex-direction: row;
+    align-items: center;
+
 }
 
 .post-topic {
@@ -82,4 +86,14 @@
 
 .footer-icon {
     margin-right: 0.25rem;
+}
+
+.gray-text {
+    margin-left: 0.2rem;
+    color: #8E8E8E;
+}
+
+.green-text {
+    margin-left: 0.2rem;
+    color: #57DD79;
 }

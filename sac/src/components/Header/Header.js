@@ -15,7 +15,7 @@ function Header() {
         <div className="header">
             <div className="header-container">
                 <div className="header-left">
-                    <img src={logo} alt="Logo" className="logo" />
+                    <a href='/'><img src={logo} alt="Logo" className="logo" /></a>
                     <div className="search-container">
                         <img src={searchIcon} alt="Search Icon" className="search-icon" />
                         <input
@@ -32,7 +32,6 @@ function Header() {
                     <p className='etc-work'>토픽 둘러보기</p>
                     <p className='etc-work'>MY 토픽</p>
                     <p className='etc-work'>새싹 홈</p>
-                    <div className="divider"></div>
                     <button className='login-button'>로그인</button>
                 </div>
             </div>
