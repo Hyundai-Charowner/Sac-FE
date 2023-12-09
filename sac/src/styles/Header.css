@@ -31,7 +31,7 @@
     align-items: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .header-right {
         display: none;
     }
@@ -86,6 +86,16 @@
 .login-button:hover {
     cursor: pointer;
 }
+
+.user-button {
+    margin-right: 1rem;
+    width: auto;
+    align-items: center;
+    color: white;
+    border-radius: 99px;
+    padding: 1rem;
+}
+
 
 .divider {
     width: 2px;

@@ -1,0 +1,21 @@
+.user-info-container {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 85%; /* 버튼 아래로 위치하도록 조절할 수 있습니다. */
+    right: 30%;
+    left: -100%;
+    background-color: white; /* 원하는 배경색으로 설정하세요 */
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: gray;
+}
+
+.overlay-contents {
+    margin-top: 0.75rem;
+}
