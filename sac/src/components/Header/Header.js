@@ -4,7 +4,7 @@ import searchIcon from '../../assets/image/search.png';
 import '../../styles/Header.css';
 import UserInfo from '../User/UserInfo';
 import Modal from 'react-modal'; // 모달 라이브러리 import
-import GoogleLogInButton from '../../components/Login/GoogleLogInButton';
+import LogIn from '../../components/Login/Login';
 import customModalStyles from '../../styles/Modal';
 
 function Header() {
@@ -65,9 +65,8 @@ function Header() {
                 isOpen={isLoginModalOpen}
                 onRequestClose={closeLoginModal}
                 style={customModalStyles}
-                // 모달 스타일 등 추가 설정 가능
             >
-                <GoogleLogInButton />
+                <LogIn />
             </Modal>
         </div>
     );

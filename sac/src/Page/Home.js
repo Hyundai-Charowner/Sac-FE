@@ -5,13 +5,11 @@ import LeftNavi from '../components/Navi/LeftNavi/LeftNavi';
 import RightNavi from '../components/Navi/RightNavi/RightNavi';
 import Post from '../components/Post/Post';
 import PostDetail from '../components/Post/PostDetail';
-import GoogleLogInButton from '../components/Login/GoogleLogInButton';
 import '../styles/Home.css';
 import customModalStyles from '../styles/Modal';
 
 function App() {
     const [isPostDetailOpen, setIsPostDetailOpen] = useState(false);
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
     const openPostDetailModal = () => {
         setIsPostDetailOpen(true);
