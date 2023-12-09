@@ -10,6 +10,15 @@ function UserInfo() {
         setIsOverlayVisible(!isOverlayVisible);
     };
 
+    const handleLogout = () => {
+        // 로그아웃 버튼 클릭 시 localStorage에서 loginSession 삭제
+        localStorage.removeItem('loginSession');
+        setIsOverlayVisible(false);
+
+        // 페이지 새로고침
+        window.location.reload();
+    };
+
     const handleClickOutside = (event) => {
         if (overlayRef.current && !overlayRef.current.contains(event.target)) {
             setIsOverlayVisible(false);
@@ -31,7 +40,8 @@ function UserInfo() {
 
             {isOverlayVisible && (
                 <div className='overlay' ref={overlayRef}>
-                    <p>Overlay Content</p>
+                    <button className="overlay-contents-first">😀 마이페이지</button>
+                    <button className="overlay-contents" onClick={handleLogout}>👋 로그아웃</button>
                 </div>
             )}
         </div>
