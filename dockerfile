@@ -2,7 +2,7 @@
 FROM node:20.9.0 AS build
 
 # Set the working directory in the container
-WORKDIR /sac
+WORKDIR sac
 
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
