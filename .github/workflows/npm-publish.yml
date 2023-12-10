@@ -27,9 +27,9 @@ jobs:
 
     - name: Docker build and push
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/sesac-fe .
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/sac-fe .
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker push ${{ secrets.DOCKER_USERNAME }}/sesac-fe
+        docker push ${{ secrets.DOCKER_USERNAME }}/sac-fe
 
     - name: Deploy
       uses: appleboy/ssh-action@master
@@ -40,12 +40,12 @@ jobs:
         script: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           # Stop and remove the existing container
-          docker stop sesac-fe || true
-          docker rm sesac-fe || true
+          docker stop sac-fe || true
+          docker rm sac-fe || true
 
           # Remove the existing image
-          docker rmi ${{ secrets.DOCKER_USERNAME }}/sesac-fe || true
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/sac-fe || true
 
           # Pull and run the application container
-          docker pull ${{ secrets.DOCKER_USERNAME }}/sesac-fe
-          docker run -d -p 80:80 --name sesac-fe ${{ secrets.DOCKER_USERNAME }}/sesac-fe || echo "Error: Unable to start the container"
+          docker pull ${{ secrets.DOCKER_USERNAME }}/sac-fe
+          docker run -d -p 80:80 --name sac-fe ${{ secrets.DOCKER_USERNAME }}/sac-fe || echo "Error: Unable to start the container"
