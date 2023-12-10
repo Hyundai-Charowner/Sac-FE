@@ -22,11 +22,11 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
-      working-directory: ./sac # npm install을 실행할 디렉토리 설정
+      working-directory: ../sac # npm install을 실행할 디렉토리 설정
     
     - name: Build React App
       run: npm run build
-      working-directory: ./sac # npm run build를 실행할 디렉토리 설정
+      working-directory: ../sac # npm run build를 실행할 디렉토리 설정
 
 
     - name: Docker build and push
