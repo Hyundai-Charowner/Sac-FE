@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm cache clean --force && npm install
 
 # Copy the entire project to the container
 COPY . .
