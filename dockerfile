@@ -2,13 +2,13 @@
 FROM node:20.9.0 AS build
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /app/sac
 
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
 # Install dependencies
-RUN npm cache clean --force && npm install
+RUN npm install
 
 # Copy the entire project to the container
 COPY . .
@@ -16,11 +16,9 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Stage 2: Use Nginx to serve the static files
+# Use Nginx to serve the static files
 FROM nginx:alpine
-
-# Copy the build artifacts from Stage 1 to Stage 2
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/sac/build /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 80
