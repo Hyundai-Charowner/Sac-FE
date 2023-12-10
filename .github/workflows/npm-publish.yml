@@ -12,7 +12,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -25,7 +24,6 @@ jobs:
     - name: Build React App
       run: npm run build
       working-directory: sac # npm run build를 실행할 디렉토리 설정
-
 
     - name: Docker build and push
       run: |
@@ -41,12 +39,12 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
           # Stop and remove the existing container
-          docker stop your-container-name || true
-          docker rm your-container-name || true
+          docker stop sesac-fe || true
+          docker rm sesac-fe || true
 
           # Remove the existing image
           docker rmi ${{ secrets.DOCKER_USERNAME }}/sesac-fe || true
 
           # Pull and run the application container
           docker pull ${{ secrets.DOCKER_USERNAME }}/sesac-fe
-          docker run -d -p 80:3000 --name your-container-name ${{ secrets.DOCKER_USERNAME }}/sesac-fe || echo "Error: Unable to start the container"
+          docker run -d -p 80:3000 --name sesac-fe ${{ secrets.DOCKER_USERNAME }}/sesac-fe || echo "Error: Unable to start the container"
