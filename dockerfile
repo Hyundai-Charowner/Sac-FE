@@ -16,8 +16,10 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Use Nginx to serve the static files
+# Stage 2: Use Nginx to serve the static files
 FROM nginx:alpine
+
+# Copy the build artifacts from Stage 1 to Stage 2
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80 to the outside world
