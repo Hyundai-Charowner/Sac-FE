@@ -1,8 +1,23 @@
 import React from "react";
 import "../../../styles/RightNavi.css";
 import discordIcon from '../../../assets/image/discord.png';
+import customModalStyles from '../../../styles/Modal';
+import Modal from 'react-modal';
 
 function RightNavi() {
+    const handleCopyEmail = () => {
+        const emailText = 'sesac.sac@gmail.com';
+    
+        const tempElement = document.createElement('textarea');
+        tempElement.value = emailText;
+        document.body.appendChild(tempElement);
+        tempElement.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempElement);
+    
+        alert('이메일이 클립보드에 복사되었습니다.');
+      };
+
   return (
     <div className="right-navi">
         <div className="navi-box">
@@ -85,7 +100,7 @@ function RightNavi() {
                 <p className="box-header-text">문의하기</p>
             </div>
             <div className="box-body">
-                <div className="body-inquiry">
+                <div className="body-inquiry" onClick={handleCopyEmail}>
                     <p className="inquiry-icon">📧</p>
                     <p className="inquiry-text">관리자 이메일</p>
                 </div>
