@@ -118,3 +118,27 @@
     background-color: #F2F2F2;
     cursor: pointer;
 }
+
+.alert-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-close {
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    background-color: #F2F2F2;
+    border-radius: 16px;
+    align-items: center; /* flex-center가 아니라 center를 사용합니다. */
+    padding: 0 3rem;
+    transition: box-shadow 0.3s;
+    margin-top: 1.5rem;
+    color: #6D55FF;
+    background-color: #F0EEFF;
+}
+
+.button-close:hover {
+    box-shadow: 0 0 0 3px #B5A4E7;
+    cursor: pointer;
+}

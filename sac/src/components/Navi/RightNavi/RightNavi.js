@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useState }from "react";
 import "../../../styles/RightNavi.css";
 import discordIcon from '../../../assets/image/discord.png';
 import customModalStyles from '../../../styles/Modal';
 import Modal from 'react-modal';
 
 function RightNavi() {
+    const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+
+    const openEmailModal = () => {
+        setIsEmailModalOpen(true);
+    };
+
+    const closeEmailModal = () => {
+        setIsEmailModalOpen(false);
+    };
+
     const handleCopyEmail = () => {
-        const emailText = 'sesac.sac@gmail.com';
-    
-        const tempElement = document.createElement('textarea');
+        const emailText = "sesac.sac@gmail.com";
+
+        const tempElement = document.createElement("textarea");
         tempElement.value = emailText;
         document.body.appendChild(tempElement);
         tempElement.select();
-        document.execCommand('copy');
+        document.execCommand("copy");
         document.body.removeChild(tempElement);
-    
-        alert('이메일이 클립보드에 복사되었습니다.');
-      };
+
+        openEmailModal(); // 이메일 복사 시 모달 열기
+    };
 
   return (
     <div className="right-navi">
@@ -110,6 +120,17 @@ function RightNavi() {
                 </div>
             </div>
         </div>
+
+        <Modal
+            isOpen={isEmailModalOpen}
+            onRequestClose={closeEmailModal}
+            style={customModalStyles}
+        >
+            <div className="alert-modal">
+                <p>이메일이 클립보드에 복사되었습니다.</p>
+                <button onClick={closeEmailModal} className="button-close">닫기</button>
+            </div>
+        </Modal>
     </div>
   );
 }
