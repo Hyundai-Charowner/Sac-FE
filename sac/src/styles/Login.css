@@ -72,7 +72,7 @@
     padding: 0.25rem 1.5rem;
 }
 
-.google-login-box {
+/* .google-login-box {
 
     display: flex;
     flex-direction: row;
@@ -82,12 +82,12 @@
     border: 1px solid #ccc;
     padding: 0.6rem 6rem;
     background-color: black;
-    z-index: 999;
-}
+} */
 
-.login-footer {
+/* .login-footer {
     opacity: 0;
     position: absolute;
-}
+    z-index: -1;
+} */
 
 

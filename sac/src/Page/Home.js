@@ -8,42 +8,42 @@ import PostDetail from '../components/Post/PostDetail';
 import '../styles/Home.css';
 import customModalStyles from '../styles/Modal';
 
-function App() {
-    const [isPostDetailOpen, setIsPostDetailOpen] = useState(false);
+function Home() {
+  const [isPostDetailOpen, setIsPostDetailOpen] = useState(false);
 
-    const openPostDetailModal = () => {
-        setIsPostDetailOpen(true);
-    };
+  const openPostDetailModal = () => {
+    setIsPostDetailOpen(true);
+  };
 
-    const closePostDetailModal = () => {
-        setIsPostDetailOpen(false);
-    };
+  const closePostDetailModal = () => {
+    setIsPostDetailOpen(false);
+  };
 
-    return (
-        <div className="App">
-            <div className="header">
-                <Header />
-            </div>
-            <div className="body">
-                <div className='navi'>
-                    <LeftNavi />
-                </div>
-                <div className="main">
-                    <Post onClick={openPostDetailModal} />
-                    <Modal
-                        isOpen={isPostDetailOpen}
-                        onRequestClose={closePostDetailModal}
-                        style={customModalStyles}
-                    >
-                        <PostDetail />
-                    </Modal>
-                </div>
-                <div className='navi'>
-                    <RightNavi />
-                </div>
-            </div>
+  return (
+    <div className="App">
+      <div className="header">
+        <Header />
+      </div>
+      <div className="body">
+        <div className='navi'>
+          <LeftNavi />
         </div>
-    );
+        <div className="main">
+          <Post onClick={openPostDetailModal} />
+          <Modal
+            isOpen={isPostDetailOpen}
+            onRequestClose={closePostDetailModal}
+            style={customModalStyles}
+          >
+            <PostDetail />
+          </Modal>
+        </div>
+        <div className='navi'>
+          <RightNavi />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App;
+export default Home;

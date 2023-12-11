@@ -25,13 +25,13 @@ export default function Login() {
                 <div className="login-footer">
                     <GoogleLogInButton />
                 </div>
-                <div className="google-login-box">
+                {/* <div className="google-login-box">
                     <div className="google-login-image">
                         <img src={googleIcon} alt="googleIcon" />
                     </div>
                     <div className="google-login-text">구글로 시작하기</div>
                     <div className="google-login-blank"> </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
