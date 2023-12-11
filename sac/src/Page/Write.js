@@ -1,6 +1,6 @@
 import Header from '../components/Header/Header';
-import LeftNavi from '../components/Navi/LeftNavi/LeftNavi';
-import RightNavi from '../components/Navi/RightNavi/RightNavi';
+
+import WriteBody from '../components/Write/WriteBody';
 import '../styles/Home.css';
 
 function Write() {
@@ -11,14 +11,8 @@ function Write() {
         <Header />
       </div>
       <div className="body">
-        <div className='navi'>
-          <LeftNavi />
-        </div>
         <div className="main">
-          gdgdgdgd
-        </div>
-        <div className='navi'>
-          <RightNavi />
+          <WriteBody />
         </div>
       </div>
     </div>
