@@ -16,4 +16,11 @@ COPY sac .
 # Build the React app
 RUN npm run build
 
-EXPOSE 3000
+# Use Nginx to serve the static files
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+# Command to run the application
+CMD ["nginx", "-g", "daemon off;"]
