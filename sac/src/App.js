@@ -1,14 +1,17 @@
-function App() {
-    return (
-        <div className="h-max">
-            <p>안녕하세요</p>
-            <p className="font-bold">두꺼운 폰트</p>
-            <p className="text-lime-900">색깔있는 폰트</p>
-            <br/>
-            <p className="text-lime-900 text-8xl">크기가 큰 폰트</p>
-        </div>
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Page/Home';
+import Write from './Page/Write';
 
-    );
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/write" element={<Write />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

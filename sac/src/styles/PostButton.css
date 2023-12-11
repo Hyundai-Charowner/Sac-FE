@@ -1,0 +1,42 @@
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 1rem;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.write-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 8px 1rem;
+    border-radius: 12px;
+    background-color: #F2F2F2;
+    transition: box-shadow 0.3s;
+}
+
+.write-container:hover {
+    background-color: #E6E6E6;
+    box-shadow: 0 0 0 3px #B5A4E7;
+    cursor: pointer;
+}
+
+.write-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.user-image {
+    width: 52px;
+    height: 52px;
+    margin-right: 0.5rem;
+}
+
+.write-text {
+    font-size: 16px;
+    color: #8E8E8E;
+}
