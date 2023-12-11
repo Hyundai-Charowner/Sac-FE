@@ -1,6 +1,7 @@
 import React from "react";
-import '../styles/Home.css';
+import '../styles/MyPage.css';
 import Header from "../components/Header/Header";
+import MyHead from "../components/MyPage/MyHead";
 
 function MyPage() {
 
@@ -10,6 +11,7 @@ function MyPage() {
         <Header />
       </div>
       <div className="body">
+        <MyHead />
       </div>
     </div>
   );
