@@ -21,7 +21,10 @@ function MyHead() {
                 </div>
             </div>
             <div className="my-navi-body">
-                <div className="my-topic-title">MY 토픽</div>
+                <div className="my-topic-title">
+                    MY 토픽
+                    <button className="my-topic-edit">편집</button>    
+                </div>
                 <div className="my-topic-list">
                     {topics.map((topic, index) => (
                         <TopicItem key={index} topic={topic} />

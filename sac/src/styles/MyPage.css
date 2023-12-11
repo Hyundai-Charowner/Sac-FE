@@ -1,6 +1,6 @@
 .my-navi {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   width: 22rem;
   height: max-content;
   background-color: #ffffff;
@@ -17,6 +17,13 @@
   margin-bottom: 1.5rem;
 }
 
+.my-navi-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .user-info {
   display: flex;
   flex-direction: row;
@@ -30,8 +37,29 @@
 }
 
 .my-topic-title {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+}
+
+.my-topic-edit {
+  font-size: 14px;
+  padding: 0.3rem 1rem;
+  margin-left: 1rem;
+  margin-bottom: 4px;
+  color: #6D55FF;
+  background-color: #F0EEFF;
+  border-radius: 14px;
+  transition: box-shadow 0.3s;
+  flex-direction: row;
+}
+
+.my-topic-edit:hover {
+  box-shadow: 0 0 0 3px #B5A4E7;
+  cursor: pointer;
 }
 
 .user-name {
@@ -41,4 +69,21 @@
 .user-email {
   font-size: 0.8rem;
   color: gray;
+}
+
+.my-topic-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.my-body {
+  max-width: 1200px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 52px;
+  margin-bottom: 24px;
 }
