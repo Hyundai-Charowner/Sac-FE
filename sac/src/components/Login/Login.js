@@ -3,7 +3,8 @@ import communityImage from "../../assets/image/community.png";
 import talkImage from "../../assets/image/talk.png";
 import "../../styles/Login.css";
 import GoogleLogInButton from './GoogleLogInButton';
-import googleIcon from "../../assets/image/googleIcon.png";
+// import googleIcon from "../../assets/image/googleIcon.png";
+
 
 export default function Login() {
     return (
