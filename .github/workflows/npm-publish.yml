@@ -22,7 +22,7 @@ jobs:
 
     - name: .env setting
       run: |
-        echo ${{ secrets.REACT_ENV }} > sac/.env
+        echo "${{ secrets.REACT_ENV }}" > sac/.env
 
     - name: Docker build and push
       run: |
