@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './PostHeader';
 import Body from './PostBody';
 import Footer from './PostFooter';
+import PostButton from './PostButton';
 import '../../styles/Post.css';
 
 const Post = ({ imageUrl, username, timestamp, topic, title, content, commentCount, heartCount, viewsCount, onClick }) => {
