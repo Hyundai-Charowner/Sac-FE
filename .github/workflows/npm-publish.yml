@@ -57,3 +57,4 @@ jobs:
           # Pull and run the application container
           docker pull ${{ secrets.DOCKER_USERNAME }}/sac-fe
           docker run -d --name sac-fe --network nginx-fe ${{ secrets.DOCKER_USERNAME }}/sac-fe || echo "Error: Unable to start the container"
+          docker network connect fe-be sac-fe
