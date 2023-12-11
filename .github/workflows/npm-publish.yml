@@ -22,7 +22,7 @@ jobs:
 
     - name: .env setting
       run: |
-        echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}" >> .env
+        echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}\n" >> .env
         echo "REACT_APP_HOST_NAME=${{ secrets.REACT_APP_HOST_NAME }}" >> .env
 
     - name: Install Dependencies
