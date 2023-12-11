@@ -25,14 +25,6 @@ jobs:
         echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}\n" >> sac/.env
         echo "REACT_APP_HOST_NAME=${{ secrets.REACT_APP_HOST_NAME }}" >> sac/.env
 
-    - name: Install Dependencies
-      run: npm install
-      working-directory: sac # npm install을 실행할 디렉토리 설정
-    
-    - name: Build React App
-      run: npm run build
-      working-directory: sac # npm run build를 실행할 디렉토리 설정
-
     - name: Docker build and push
       run: |
         docker build -t ${{ secrets.DOCKER_USERNAME }}/sac-fe .
