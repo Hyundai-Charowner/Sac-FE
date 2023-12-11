@@ -46,4 +46,9 @@
     cursor: pointer;
   }
 
+  .post-button-container {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
 

@@ -1,14 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/PostButton.css';
 import writeIcon from '../../assets/image/write.png';
 import userDefaultImage from '../../assets/image/userDefault.png';
 
 function PostButton() {
     const username = null; // 사용자의 이름을 가져오는 로직이 필요합니다.
+    const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        // 페이지 전환 로직을 구현하세요.
-    };
+        navigate('/write');
+    }
 
     return (
         <div className='button-container'>
