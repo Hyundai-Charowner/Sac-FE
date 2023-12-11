@@ -28,6 +28,12 @@ function RightNavi() {
         openEmailModal(); // 이메일 복사 시 모달 열기
     };
 
+    const handleCopyDiscord = () => {
+        const discordText = "https://discord.gg/BtX6DYav";
+        window.open(discordText, "_blank");
+    }
+        
+
   return (
     <div className="right-navi">
         <div className="navi-box">
@@ -114,7 +120,7 @@ function RightNavi() {
                     <p className="inquiry-icon">📧</p>
                     <p className="inquiry-text">관리자 이메일</p>
                 </div>
-                <div className="body-inquiry">
+                <div className="body-inquiry" onClick={handleCopyDiscord}>
                     <img src={discordIcon} alt="Discord Icon" className="inquiry-icon" />
                     <p className="inquiry-text">디스코드 서버</p>
                 </div>
