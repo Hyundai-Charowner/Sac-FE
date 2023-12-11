@@ -1,11 +1,44 @@
+.my-navi {
+  display: flex;
+  align-items: start;
+  width: 22rem;
+  height: max-content;
+  background-color: #ffffff;
+  padding: 1.6rem 1.5rem;
+  border-radius: 18px;
+  flex-direction: column;
+}
+
+.my-navi-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
 .user-info {
   display: flex;
   flex-direction: row;
-  margin-bottom: 2rem;
+  align-items: center;
 }
 
 .my-image {
-  width: 6rem;
-  height: 6rem;
-  margin-right: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+}
+
+.my-topic-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-name {
+  font-size: 1rem;
+}
+
+.user-email {
+  font-size: 0.8rem;
+  color: gray;
 }
