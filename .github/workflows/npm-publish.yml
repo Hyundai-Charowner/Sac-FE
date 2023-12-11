@@ -1,0 +1,51 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.9.0'
+
+    - name: Install Dependencies
+      run: npm install
+      working-directory: sac # npm install을 실행할 디렉토리 설정
+    
+    - name: Build React App
+      run: npm run build
+      working-directory: sac # npm run build를 실행할 디렉토리 설정
+
+    - name: Docker build and push
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/sac-fe .
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/sac-fe
+
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ubuntu
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          # Stop and remove the existing container
+          docker stop sac-fe || true
+          docker rm sac-fe || true
+
+          # Remove the existing image
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/sac-fe || true
+
+          # Pull and run the application container
+          docker pull ${{ secrets.DOCKER_USERNAME }}/sac-fe
+          docker run -d --name sac-fe --network nginx-fe ${{ secrets.DOCKER_USERNAME }}/sac-fe || echo "Error: Unable to start the container"
