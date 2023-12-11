@@ -48,4 +48,4 @@ jobs:
 
           # Pull and run the application container
           docker pull ${{ secrets.DOCKER_USERNAME }}/sac-fe
-          docker run -d -p 3000:3000 --name sac-fe ${{ secrets.DOCKER_USERNAME }}/sac-fe || echo "Error: Unable to start the container"
+          docker run -d --name sac-fe ${{ secrets.DOCKER_USERNAME }}/sac-fe || echo "Error: Unable to start the container"
