@@ -10,10 +10,8 @@ function Write() {
       <div className="header">
         <Header />
       </div>
-      <div className="body">
-        <div className="main">
+      <div className="body" style={{ justifyContent: 'center' }}>
           <WriteBody />
-        </div>
       </div>
     </div>
   );

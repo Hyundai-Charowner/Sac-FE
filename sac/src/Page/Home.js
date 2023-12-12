@@ -34,6 +34,13 @@ function Home() {
                 <PostButton />
             </div>
             <Post onClick={openPostDetailModal} />
+            <Post onClick={openPostDetailModal} />
+            <Post onClick={openPostDetailModal} />
+            <Post onClick={openPostDetailModal} />
+            <Post onClick={openPostDetailModal} />
+            <Post onClick={openPostDetailModal} />
+            <Post onClick={openPostDetailModal} />
+            <Post onClick={openPostDetailModal} />
             <Modal
                 isOpen={isPostDetailOpen}
                 onRequestClose={closePostDetailModal}
