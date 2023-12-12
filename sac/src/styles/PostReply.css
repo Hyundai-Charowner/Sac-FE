@@ -15,6 +15,7 @@
 .reply-image {
     width: 2.5rem;
     height: 2.5rem;
+    margin-right: 0.5rem;
     border-radius: 99%;
     object-fit: cover;
 }
@@ -36,7 +37,7 @@
     background-color: #CBEEFA;
     border-radius: 8px;
     padding: 0.5rem 0.75rem;
-    margin-left: 2.75rem;
+    margin-left: 3.25rem;
 }
 
 .reply-content-text {

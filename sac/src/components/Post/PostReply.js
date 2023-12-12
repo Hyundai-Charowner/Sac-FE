@@ -1,6 +1,6 @@
 import React from "react";
 import '../../styles/PostReply.css';
-import Reply from './Reply';
+import Reply from '../commons/Reply';
 
 const PostReply = () => {
     return (

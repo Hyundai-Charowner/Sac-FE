@@ -1,12 +1,32 @@
 .my-navi {
   display: flex;
   align-items: flex-start;
-  width: 22rem;
+  width: 20rem;
   height: max-content;
   background-color: #ffffff;
   padding: 1.6rem 1.5rem;
   border-radius: 18px;
   flex-direction: column;
+}
+
+.my-body-main {
+  display: flex;
+  width: 50rem;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 18px;
+
+}
+
+@media (max-width: 1200px) {
+  .my-body-navi {
+      display: none;
+  }
+
+  .my-body-main {
+      width: 100%;
+      margin: 0 auto;
+  }
 }
 
 .my-navi-header {
@@ -40,15 +60,16 @@
   display: flex;
   width: 100%;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  padding-left: 0.4rem;
   margin-bottom: 0.5rem;
 }
 
 .my-topic-edit {
   font-size: 14px;
   padding: 0.3rem 1rem;
-  margin-left: 1rem;
   margin-bottom: 4px;
   color: #6D55FF;
   background-color: #F0EEFF;
@@ -83,7 +104,7 @@
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 52px;
   margin-bottom: 24px;
 }

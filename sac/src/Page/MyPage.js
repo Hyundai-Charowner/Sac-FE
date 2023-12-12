@@ -8,12 +8,16 @@ function MyPage() {
 
   return (
     <div className="App">
-      <div className="navi">
+      <div className="header">
         <Header />
       </div>
       <div className="my-body">
-        <MyNavi />
-        <MyBody />
+        <div className="my-body-navi">
+            <MyNavi />
+        </div>
+        <div className="my-body-main">
+            <MyBody />
+        </div>
       </div>
     </div>
   );
