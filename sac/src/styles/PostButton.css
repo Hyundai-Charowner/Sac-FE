@@ -31,9 +31,10 @@
 }
 
 .user-image {
-    width: 52px;
-    height: 52px;
-    margin-right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.8rem;
+    border-radius: 50%;
 }
 
 .write-text {
