@@ -2,7 +2,7 @@ import axios from "axios";
 
 const sendOAuthDataToServer = (credential) => {
   axios
-    .post(process.env.REACT_APP_HOST_NAME + "/api/login/google", {
+    .post("/api/login/google", {
       credential: credential,
     })
     .then((serverResponse) => {
