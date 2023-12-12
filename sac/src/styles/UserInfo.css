@@ -19,3 +19,9 @@
 .overlay-contents {
     margin-top: 0.75rem;
 }
+
+.user-button {
+    width: 4.5rem;
+    height: 4.5em;
+    border-radius: 50%;
+}
