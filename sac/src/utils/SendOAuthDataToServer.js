@@ -2,7 +2,7 @@ import axios from "axios";
 
 const sendOAuthDataToServer = (credential) => {
   axios
-    .post("/api/login/google", {
+    .post(process.env.REACT_APP_HOST_NAME + "/login/google", {
       credential: credential,
     })
     .then((serverResponse) => {
@@ -12,7 +12,7 @@ const sendOAuthDataToServer = (credential) => {
       } else {
         alert("Google 로그인에 실패했습니다.");
       }
-      localStorage.setItem("loginSession", JSON.stringify(serverResponse.data));
+      localStorage.setItem("jwtToken", JSON.stringify(serverResponse.data));
     })
     .catch((error) => {
       alert("SAC 로그인에 실패했습니다.");
