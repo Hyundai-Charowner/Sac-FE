@@ -42,3 +42,13 @@ body {
           'Apple Color Emoji',
           'Segoe UI Emoji';
 }
+
+/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
+.App{
+  overflow-y: hidden;
+  max-height: 100vh;
+}
+
+.App::-webkit-scrollbar {
+  display: none;
+}
