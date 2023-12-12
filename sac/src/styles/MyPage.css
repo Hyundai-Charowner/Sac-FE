@@ -15,7 +15,6 @@
   align-items: center;
   flex-direction: column;
   border-radius: 18px;
-
 }
 
 @media (max-width: 1200px) {
@@ -101,10 +100,10 @@
 
 .my-body {
   max-width: 1200px;
+  height: max-content;
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 52px;
-  margin-bottom: 24px;
 }

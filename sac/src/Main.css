@@ -43,12 +43,22 @@ body {
           'Segoe UI Emoji';
 }
 
-/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
-.App{
-  overflow-y: hidden;
-  max-height: 100vh;
+.body {
+  max-width: 1200px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 52px;
 }
 
-.App::-webkit-scrollbar {
-  display: none;
+.main {
+  width: 36.6rem;
+  max-height: calc(100vh - 104px);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  overflow-y: auto;
 }

@@ -51,6 +51,13 @@
     padding: 0 1rem;
     margin-bottom: 0;
     border-radius: 16px;
+    max-height: calc(100vh - 185px);
+    align-items: center;
+    overflow-y: auto;
+}
+
+.tab-content::-webkit-scrollbar {
+    display: none;
 }
 
 .my-body-menu {
