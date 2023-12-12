@@ -110,10 +110,10 @@
 .my-reply-content {
     width: 100%;
     height: fit-content;
-    padding: 1.5rem 1rem 1rem 1rem;
     margin-bottom: 1.5rem;
     border-radius: 16px;
     background-color: white;
+    padding: 1.5rem 1rem;
 }
 
 .my-reply-title {

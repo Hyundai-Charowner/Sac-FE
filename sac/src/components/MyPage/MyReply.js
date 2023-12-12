@@ -4,7 +4,7 @@ import '../../styles/MyPageBody.css';
 
 function MyReply() {
     return (
-        <div>
+        <div className="my-body-post">
             <div className="my-reply-content">
                 <Reply />
                 <div className="my-reply-title">
