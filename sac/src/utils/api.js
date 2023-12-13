@@ -11,7 +11,6 @@ instance.interceptors.request.use(
         try {
             if (token) {
                 config.headers.accessToken = `${token}`;
-                config.headers.Connection = 'keep-alive';
             }
 
             return config;
