@@ -1,0 +1,19 @@
+.look-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.body-title {
+    font-size: 1.6rem;
+    margin-left: 1.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.body-content {
+    font-size: 1rem;
+    margin-left: 1.6rem;
+    color: #707070;
+    margin-bottom: 2rem;
+}
