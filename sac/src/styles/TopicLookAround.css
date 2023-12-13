@@ -1,0 +1,30 @@
+.body {
+    max-height: calc(100vh - 128px);
+    overflow-y: auto;
+}
+
+.body::-webkit-scrollbar {
+    display: none;
+}
+
+.look-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0.1rem;
+}
+
+.body-title {
+    font-size: 2.2rem;
+    margin-left: 1.2rem;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+.body-content {
+    font-size: 1.2rem;
+    margin-left: 1.2rem;
+    color: #707070;
+    margin-bottom: 2rem;
+}
