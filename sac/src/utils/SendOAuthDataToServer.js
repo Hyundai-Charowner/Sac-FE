@@ -12,7 +12,8 @@ const sendOAuthDataToServer = (credential) => {
       } else {
         alert("Google 로그인에 실패했습니다.");
       }
-      localStorage.setItem("jwtToken", JSON.stringify(serverResponse.data));
+      localStorage.setItem("jwtToken", serverResponse.data);
+      console.log("localStorage:", serverResponse.data);
     })
     .catch((error) => {
       alert("SAC 로그인에 실패했습니다.");

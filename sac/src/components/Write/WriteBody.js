@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import axiosInstance from "../../utils/api.js";
 import '@toast-ui/editor/dist/toastui-editor.css';
 import '../../styles/Write.css';
 
@@ -13,30 +14,39 @@ const WriteBody = () => {
 
     const handleContentChange = () => {
         const editorContent = editorRef.current.getInstance().getMarkdown();
-        // 본문으로 사용
         setBody(editorContent);
     };
 
     const handleTitleChange = (event) => {
-        // 입력창에서 받은 타이틀 값을 상태 변수에 저장
         setTitle(event.target.value);
     };
 
-    const handleSubmit = () => {
-        // 여기에 submit 버튼을 클릭했을 때 수행할 동작을 추가
-        console.log('Title:', title);
-        console.log('Body:', body);
+    const handleSubmit = async () => {
+        try {
+            const response = await axiosInstance.post("/posts", {
+                board_id: 1,
+                post_head: title,
+                post_content: body
+            });
+
+            console.log('API 응답:', response.data);
+            navigate('/');
+        } catch (error) {
+            console.error('API 요청 실패:', error);
+            console.error('token', localStorage.getItem('jwtToken'));
+        }
+    };
+    
+    
+
+    const handleCancel = () => {
         navigate('/');
     };
 
-    const handleCancle = () => {
-        navigate('/');
-    }
-
-
     return (
         <div className="markdown-editor">
-            <input className="title-input"
+            <input
+                className="title-input"
                 type="text"
                 id="title"
                 value={title}
@@ -56,12 +66,9 @@ const WriteBody = () => {
                     onChange={handleContentChange}
                 />
             </div>
-            <div className="footer">   
-                <button className="submit-button" 
-                onClick={handleSubmit}>등록하기</button>
-
-                <button className="submit-button" 
-                onClick={handleCancle}>취소하기</button>
+            <div className="footer">
+                <button className="submit-button" onClick={handleSubmit}>등록하기</button>
+                <button className="submit-button" onClick={handleCancel}>취소하기</button>
             </div>
         </div>
     );
