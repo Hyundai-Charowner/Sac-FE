@@ -108,3 +108,6 @@
     background-color: #EAEAEC;
 }
 
+.user-info {
+    z-index: 1;
+}

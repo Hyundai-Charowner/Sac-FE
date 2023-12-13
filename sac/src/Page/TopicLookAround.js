@@ -83,7 +83,7 @@ function TopicLookAround() {
 
   return (  
         <div claseeName="look-page">
-            <div className="header">
+            <div className="header-look">
                 <Header />
             </div>
             <div className="body">
