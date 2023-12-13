@@ -22,6 +22,7 @@ const customModalStyles = {
         backgroundColor: "white",
         justifyContent: "center",
         overflow: "auto",
+        alignItems: "center",
     },
     button: {
         display: "none",
