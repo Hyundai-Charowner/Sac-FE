@@ -39,6 +39,8 @@
   align-items: flex-start;
 }
 
+
+
 .tile-header-button {
   margin-left: auto;
   border-radius: 10px;
@@ -49,17 +51,17 @@
   background-color: #6D55FF;
 }
 
-.tile-header-button.subscribed {
-  color: #6D55FF;
-  background-color: #F0EEFF;
-
-}
-
 .tile-header-button:hover {
   color: #6D55FF;
   background-color: #F0EEFF;
   box-shadow: 0 0 0 3px #B5A4E7;
   cursor: pointer;
+}
+
+.tile-header-button.subscribed {
+  color: #6D55FF;
+  background-color: #F0EEFF;
+
 }
 
 /* 추가된 스타일 */
