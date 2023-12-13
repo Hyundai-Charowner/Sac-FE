@@ -1,0 +1,25 @@
+.tileContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 3rem auto;
+  width: 70%;
+  gap: 26px;
+  padding: 16px;
+}
+
+.tileView {
+  width: 30%;
+  text-align: center;
+}
+
+.tileImage {
+  height: 10rem;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tileText {
+}
