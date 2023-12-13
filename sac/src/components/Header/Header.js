@@ -54,7 +54,7 @@ function Header() {
                         <p className='etc-work'>새싹 홈</p>
                     </div>
                     {isLoggedIn ? (
-                        <UserInfo />
+                        <UserInfo className="user-info"/>
                     ) : (
                         <button className='login-button' onClick={openLoginModal}>로그인</button>
                     )}
