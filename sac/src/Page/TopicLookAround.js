@@ -81,23 +81,23 @@ function TopicLookAround() {
     },
     ];
 
-  return (
-    <>
-      <div className="header">
-        <Header />
-      </div>
-      <div className="body">
-        <div className="look-body">
-            <div className="body-title">
-               토픽 둘러보기
+  return (  
+        <div claseeName="look-page">
+            <div className="header">
+                <Header />
             </div>
-            <div className="body-content">
-                관심 있는 토픽을 통해 사람들과의 네트워킹과 교류를 즐겨보세요.
+            <div className="body">
+                <div className="look-body">
+                    <div className="body-title">
+                        토픽 둘러보기
+                    </div>
+                    <div className="body-content">
+                        관심 있는 토픽을 통해 사람들과의 네트워킹과 교류를 즐겨보세요.
+                    </div>
+                    <TileView boards={boards} />
+                </div>
             </div>
-            <TileView boards={boards} />
         </div>
-    </div>
-    </>
   );
 }
 
