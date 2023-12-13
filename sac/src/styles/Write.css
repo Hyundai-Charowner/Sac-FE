@@ -21,7 +21,27 @@
     margin-top: 1rem;
   }
 
-  .submit-button {
+  .submit-button-post {
+    width: fit-content;
+    font-weight: bold;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 0.6rem 1.4rem;
+    color: white;
+    background-color: #6D55FF;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    margin-left: 1rem;
+  }
+
+  .submit-button-post:hover {
+    color: #6D55FF;
+    background-color: #F0EEFF;
+    box-shadow: 0 0 0 3px #B5A4E7;
+    cursor: pointer;
+  }
+
+  .submit-button-cancel {
     width: fit-content;
     font-weight: bold;
     box-sizing: border-box;
@@ -33,8 +53,10 @@
     margin-left: 1rem;
   }
 
-  .submit-button:hover {
+  .submit-button-cancel:hover {
     background-color: #F0EEFF;
     box-shadow: 0 0 0 3px #B5A4E7;
     cursor: pointer;
   }
+
+ 

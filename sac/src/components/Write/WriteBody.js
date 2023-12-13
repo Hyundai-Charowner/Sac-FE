@@ -67,8 +67,8 @@ const WriteBody = () => {
                 />
             </div>
             <div className="footer">
-                <button className="submit-button" onClick={handleSubmit}>등록하기</button>
-                <button className="submit-button" onClick={handleCancel}>취소하기</button>
+                <button className="submit-button-post" onClick={handleSubmit}>등록하기</button>
+                <button className="submit-button-cancel" onClick={handleCancel}>취소하기</button>
             </div>
         </div>
     );
