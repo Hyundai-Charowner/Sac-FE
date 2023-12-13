@@ -1,20 +1,5 @@
-.body {
-    max-width: 1200px;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: start;
-    margin-top: 52px;
-    margin-bottom: 24px;
-}
-
-.main {
-    width: 36.6rem;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
+.main::-webkit-scrollbar {
+    display: none;
 }
 
 .post {

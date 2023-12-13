@@ -14,7 +14,7 @@ function UserInfo() {
 
     const handleLogout = () => {
         // 로그아웃 버튼 클릭 시 localStorage에서 loginSession 삭제
-        localStorage.removeItem('loginSession');
+        localStorage.removeItem('jwtToken');
         setIsOverlayVisible(false);
 
         // 페이지 새로고침

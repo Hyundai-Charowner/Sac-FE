@@ -14,7 +14,7 @@ function Header() {
 
     useEffect(() => {
         // localStorage에서 loginSession 확인
-        const loginSession = localStorage.getItem('loginSession');
+        const loginSession = localStorage.getItem('jwtToken');
         setIsLoggedIn(!!loginSession); // loginSession이 존재하면 true, 아니면 false로 설정
     }, []);
 
