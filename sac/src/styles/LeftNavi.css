@@ -42,11 +42,17 @@
     align-items: center;
     padding: 8px 1rem;
     border-radius: 16px;
+    margin-bottom: 0.2rem;
 }
 
 .topic-item:hover {
     background-color: #F2F2F2;
     cursor: pointer;
+}
+
+.topic-item.selected {
+    background-color: #F2F2F2;
+    font-weight: bold;
 }
 
 .topic-item-text {
