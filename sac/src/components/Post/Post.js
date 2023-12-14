@@ -8,10 +8,10 @@ import '../../styles/Post.css';
 const Post = ({ post, onClick }) => {
     const handleClick = () => {
       if (onClick) {
-        onClick(post); // 선택된 포스트 정보를 전달
+        onClick(post.post_id);
       }
     };
-  
+
     return (
       <div className='post'>
         <div className='post_click' onClick={handleClick}>

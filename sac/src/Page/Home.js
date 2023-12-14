@@ -15,8 +15,10 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [selectedPostId, setSelectedPostId] = useState(null);
 
-  const openPostDetailModal = () => {
+  const openPostDetailModal = (postId) => {
+    setSelectedPostId(postId);
     setIsPostDetailOpen(true);
   };
 
@@ -58,12 +60,12 @@ function Home() {
     return () => {
       mainDiv.removeEventListener('scroll', handleScroll);
     };
-  }, [loading]); // Include loading in the dependency array to avoid potential issues
+  }, [loading]);
 
   useEffect(() => {
     // Initial load of posts
     fetchMorePosts();
-  }, []); // Empty dependency array to trigger only on mount
+  }, []);
 
   return (
     <div className="App">
@@ -79,14 +81,14 @@ function Home() {
             <PostButton />
           </div>
           {posts.map((post) => (
-            <Post key={post.post_id} onClick={openPostDetailModal} post={post} />
+            <Post key={post.post_id} onClick={() => openPostDetailModal(post.post_id)} post={post} />
           ))}
           <Modal
             isOpen={isPostDetailOpen}
             onRequestClose={closePostDetailModal}
             style={customModalStyles}
           >
-            <PostDetail />
+            <PostDetail postId={selectedPostId} />
           </Modal>
         </div>
         <div className='navi'>
