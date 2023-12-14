@@ -32,7 +32,7 @@ const PostDetail = ({ postId }) => {
 
     return (
         <div className='post-detail'>
-            <Header imageUrl={post.user_image} username={post.user_name} timestamp={post.created_date} topic={post.board_id} />
+            <Header imageUrl={post.user_image} username={post.user_name} timestamp={post.created_date} topic={post.board_category} />
             <Body title={post.post_head} content={post.post_content} />
             <div className='divider-detail' />
             {reply && reply.map((replyObject, index) => (

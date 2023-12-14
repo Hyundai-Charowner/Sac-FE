@@ -11,9 +11,10 @@ const WriteBody = () => {
     const editorRef = useRef(null);
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [showModal, setShowModal] = useState(false); // 모달 표시 여부
-    const [showFooterText, setShowFooterText] = useState(false); // footer-text 표시 여부
-    const [shakeEditor, setShakeEditor] = useState(false); // editor 흔들림 여부
+    const [boardId, setBoardId] = useState('1'); // 기본값으로 '1'을 설정
+    const [showModal, setShowModal] = useState(false);
+    const [showFooterText, setShowFooterText] = useState(false);
+    const [shakeEditor, setShakeEditor] = useState(false);
     const navigate = useNavigate();
 
     const handleContentChange = () => {
@@ -23,6 +24,10 @@ const WriteBody = () => {
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
+    };
+
+    const handleBoardChange = (event) => {
+        setBoardId(event.target.value);
     };
 
     const handleSubmit = async () => {
@@ -40,7 +45,7 @@ const WriteBody = () => {
 
         try {
             const response = await axiosInstance.post("/posts", {
-                board_id: 6,
+                board_id: boardId, // 업데이트된 boardId를 사용
                 post_head: title,
                 post_content: body
             });
@@ -66,6 +71,7 @@ const WriteBody = () => {
 
     return (
         <div className={`markdown-editor ${shakeEditor ? 'shake' : ''}`}>
+            
             <input
                 className="title-input"
                 type="text"
@@ -74,6 +80,28 @@ const WriteBody = () => {
                 onChange={handleTitleChange}
                 placeholder="제목을 입력하세요."
             />
+            <div className="category-selector">
+                <div className="category-text">카테고리</div>
+                <select
+                    className="category-select"
+                    value={boardId} // 현재 선택된 boardId로 설정
+                    onChange={handleBoardChange} // 변화가 있을 때 호출
+                >
+                    <option value="1">프론트엔드</option>
+                    <option value="2">백엔드</option>
+                    <option value="3">맛집</option>
+                    <option value="4">전자기기</option>
+                    <option value="5">축구</option>
+                    <option value="6">영화</option>
+                    <option value="7">건강</option>
+                    <option value="8">문화생활</option>
+                    <option value="9">뷰티</option>
+                    <option value="10">음주</option>
+                    <option value="11">연애</option>
+                    <option value="12">예능</option>
+                    <option value="13">드라마</option>
+                </select>
+            </div>
             <div className="body-input">
                 <Editor
                     ref={editorRef}

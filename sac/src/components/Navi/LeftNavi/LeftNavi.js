@@ -1,18 +1,33 @@
-// LeftNavi.js
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../../styles/LeftNavi.css";
 import TopicItem from "../../commons/TopicItem";
-
-const topics = ["전체", "프론트엔드", "백엔드", "맛집", "전자기기", "축구", "영화", "건강", "문화생활", "뷰티", "음주", "연애", "예능", "드라마"];
+import axiosInstance from "../../../utils/api.js";
 
 function LeftNavi() {
-    // useState를 사용하여 선택된 토픽을 관리
+    // useState to manage the selected topic
     const [selectedTopic, setSelectedTopic] = useState("전체");
+    const [likeTopics, setLikeTopics] = useState(null);
 
-    // 토픽을 선택할 때 호출되는 함수
+    // Function to handle topic selection
     const handleTopicSelect = (topic) => {
         setSelectedTopic(topic);
+    };
+
+    // Fetch like topics when the component mounts
+    useEffect(() => {
+        fetchLikeTopic();
+    }, []);
+
+    // Function to fetch liked topics
+    const fetchLikeTopic = async () => {
+        try {
+            const response = await axiosInstance.get("/user/boards");
+            setLikeTopics(response.data.likeList);
+        } catch (error) {
+            console.error('Failed to fetch liked topics:', error);
+            // Handle the error, you can set a default value or show an error message
+            setLikeTopics([]);
+        }
     };
 
     return (
@@ -22,9 +37,13 @@ function LeftNavi() {
                 <p className="topic-head-text">토픽</p>
             </div>
 
-
             <div className="topic-list">
-                {topics.map((topic, index) => (
+                <TopicItem
+                    topic="전체"
+                    isSelected={selectedTopic === "전체"}
+                    onSelect={() => handleTopicSelect("전체")}
+                ></TopicItem>
+                {likeTopics && likeTopics.length > 0 && likeTopics.map((topic, index) => (
                     <TopicItem
                         key={index}
                         topic={topic}

@@ -37,6 +37,7 @@ function RightNavi() {
         try {
             const response = await axiosInstance.get("/ranking/passion");
             setHotSaccers(response.data);
+            console.log('Hot saccers:', response.data);
         } catch (error) {
             console.error('데이터 가져오기 실패:', error);
         }
@@ -118,13 +119,13 @@ function RightNavi() {
                 <p className="box-header-text">이달의 열정 새싹</p>
             </div>
             <div className="box-body">
-                {hotSaccers.map((topic, index) => (
+                {hotSaccers && hotSaccers.user.map((hotsaccerObject, index) => (
                     <div className="body-item" key={index}>
                         <p className="body-item-rank">{index + 1}</p>
-                        <p className="body-item-icon">{getIconForTopic(topic)}</p>
-                        <p className="body-item-text">{topic}</p>
+                        <img src={hotsaccerObject.user_image} alt="ProfileImage" className="body-item-image" />
+                        <p className="body-item-text">{hotsaccerObject.user_name}</p>
                     </div>
-                ))} 
+                ))}
             </div>
         </div>
 
