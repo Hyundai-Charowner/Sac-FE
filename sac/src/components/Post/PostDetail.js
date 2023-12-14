@@ -1,7 +1,7 @@
 import Header from './PostHeader';
 import Body from './PostBody';
 import '../../styles/Post.css';
-import PostReply from './PostReply';
+import Reply from '../commons/Reply';
 import ReplyEdit from './ReplyEdit';
 import axiosInstance from "../../utils/api.js";
 import { useEffect, useState } from 'react';
@@ -30,14 +30,16 @@ const PostDetail = ({ postId }) => {
         return <div>Loading...</div>;
     }
 
-    const { imageUrl, username} = post;
-
     return (
         <div className='post-detail'>
-            <Header imageUrl={imageUrl} username={username} timestamp={post.created_date} topic={post.board_id} />
+            <Header imageUrl={post.user_image} username={post.user_name} timestamp={post.created_date} topic={post.board_id} />
             <Body title={post.post_head} content={post.post_content} />
             <div className='divider-detail' />
-            <PostReply />
+            {reply && reply.map((replyObject, index) => (
+                <div className="post-reply" key={index}>
+                    <Reply reply={replyObject} />
+                </div>
+            ))}
             <ReplyEdit postId={post.post_id}/>
         </div>
     );
