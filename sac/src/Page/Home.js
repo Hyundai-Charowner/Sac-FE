@@ -16,6 +16,7 @@ function Home() {
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const [selectedTopic, setSelectedTopic] = useState("전체");
 
   const openPostDetailModal = (postId) => {
     setSelectedPostId(postId);
@@ -28,44 +29,58 @@ function Home() {
 
   const fetchMorePosts = async () => {
     try {
-      setLoading(true);
+      console.log('fetching more posts');
       const response = await axiosInstance.post(`/posts/page`, {
-        pageNum: pageNum
+        pageNum: pageNum,
       });
-
       setPosts((prevPosts) => [...prevPosts, ...response.data.posts]);
       setPageNum((prevPageNum) => prevPageNum + 1);
     } catch (error) {
       console.error('데이터 가져오기 실패:', error);
-    } finally {
-      setLoading(false);
+    }
+  };
+
+  const fetchPosts = async (boardId) => {
+    try {
+      const response = await axiosInstance.get(`/posts/board/${boardId}`);
+
+      setPosts(response.data.posts);
+
+    } catch (error) {
+      console.error('데이터 가져오기 실패:', error);
+    }
+  }
+
+  useEffect(() => {
+    setPosts([]); // Clear posts when selectedTopic changes
+    fetchPosts(selectedTopic);
+  }, [selectedTopic]);
+
+  const handleScroll = () => {
+    const mainDiv = document.querySelector('.main');
+    const scrollTop = mainDiv.scrollTop;
+    const scrollHeight = mainDiv.scrollHeight;
+    const clientHeight = mainDiv.clientHeight;
+
+    if (selectedTopic === "전체" && scrollTop + clientHeight + 20 >= scrollHeight && !loading) {
+      fetchMorePosts();
     }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const mainDiv = document.querySelector('.main');
-      const scrollTop = mainDiv.scrollTop;
-      const scrollHeight = mainDiv.scrollHeight;
-      const clientHeight = mainDiv.clientHeight;
-
-      if (scrollTop + clientHeight + 20 >= scrollHeight && !loading) {
-        fetchMorePosts();
-      }
-    };
-
     const mainDiv = document.querySelector('.main');
     mainDiv.addEventListener('scroll', handleScroll);
 
     return () => {
       mainDiv.removeEventListener('scroll', handleScroll);
     };
-  }, [loading]);
+  }, [loading, selectedTopic, pageNum]);
 
   useEffect(() => {
-    // Initial load of posts
-    fetchMorePosts();
-  }, []);
+    if (selectedTopic === "전체"){
+      fetchMorePosts();
+    } 
+  }, [selectedTopic]);
 
   return (
     <div className="App">
@@ -74,7 +89,7 @@ function Home() {
       </div>
       <div className="body">
         <div className='navi'>
-          <LeftNavi />
+          <LeftNavi selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
         </div>
         <div className="main">
           <div className='post-button-container'>

@@ -3,29 +3,23 @@ import "../../../styles/LeftNavi.css";
 import TopicItem from "../../commons/TopicItem";
 import axiosInstance from "../../../utils/api.js";
 
-function LeftNavi() {
-    // useState to manage the selected topic
-    const [selectedTopic, setSelectedTopic] = useState("전체");
+function LeftNavi({ selectedTopic, setSelectedTopic }) {
     const [likeTopics, setLikeTopics] = useState(null);
 
-    // Function to handle topic selection
     const handleTopicSelect = (topic) => {
         setSelectedTopic(topic);
     };
 
-    // Fetch like topics when the component mounts
     useEffect(() => {
         fetchLikeTopic();
     }, []);
 
-    // Function to fetch liked topics
     const fetchLikeTopic = async () => {
         try {
             const response = await axiosInstance.get("/user/boards");
             setLikeTopics(response.data.likeList);
         } catch (error) {
             console.error('Failed to fetch liked topics:', error);
-            // Handle the error, you can set a default value or show an error message
             setLikeTopics([]);
         }
     };

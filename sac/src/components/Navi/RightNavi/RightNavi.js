@@ -37,7 +37,6 @@ function RightNavi() {
         try {
             const response = await axiosInstance.get("/ranking/passion");
             setHotSaccers(response.data);
-            console.log('Hot saccers:', response.data);
         } catch (error) {
             console.error('데이터 가져오기 실패:', error);
         }

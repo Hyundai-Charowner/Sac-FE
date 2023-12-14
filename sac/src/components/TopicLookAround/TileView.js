@@ -1,13 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/TileView.css";
+import axiosInstance from "../../utils/api.js";
 
 const TileView = ({ boards }) => {
   const [subscribed, setSubscribed] = useState([]);
 
+  useEffect(() => {
+    const fetchLikeList = async () => {
+      try {
+        const response = await axiosInstance.get("user/boards");
+        const likeList = response.data;
+        let stack = 0;
+
+        // Update subscription state based on the presence of boardId in likeList
+        const updatedSubscribed = boards.map((board) =>
+          likeList.hasOwnProperty(board.boardId),
+          stack++
+        );
+
+        console.log("likeList:", likeList);
+        console.log("stack:", stack);
+
+        setSubscribed(updatedSubscribed);
+      } catch (error) {
+        console.error("Failed to fetch likeList data:", error);
+      }
+    };
+
+    fetchLikeList();
+  }, [boards]); // Run the effect when boards change
+
+
   const handleSubscription = (index) => {
     setSubscribed((prevSubscribed) => {
       const newSubscribed = [...prevSubscribed];
-      newSubscribed[index] = !newSubscribed[index]; // 토글 구독 상태
+      newSubscribed[index] = !newSubscribed[index]; // Toggle subscription status
       return newSubscribed;
     });
   };
