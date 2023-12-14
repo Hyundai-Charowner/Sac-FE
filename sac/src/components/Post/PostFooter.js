@@ -6,12 +6,13 @@ import shareImage from '../../assets/image/share.png';
 import viewsImage from '../../assets/image/views.png';
 import '../../styles/Post.css';
 
-const Footer = ({ commentCount, heartCount, viewsCount }) => {
+const Footer = ({ commentCount, initialHeartCount, viewsCount }) => {
     const [isHeartClicked, setIsHeartClicked] = useState(false);
+    const [heartCount, setHeartCount] = useState(initialHeartCount);
 
     const handleHeartClick = () => {
         setIsHeartClicked(!isHeartClicked);
-        heartCount = isHeartClicked ? heartCount - 1 : heartCount + 1;
+        setHeartCount(prevHeartCount => isHeartClicked ? prevHeartCount - 1 : prevHeartCount + 1);
     };
 
     return (
