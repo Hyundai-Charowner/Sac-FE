@@ -10,14 +10,7 @@ const Post = ({ imageUrl, username, timestamp, topic, title, content, commentCou
             onClick();
         }
     };
-
-    title = "이승민...."
-    content = "<h3>이승민 실화냐??</h3>"
-    commentCount = 10
-    heartCount = 20
-    viewsCount = 30
     
-
     return (
         <div className='post' >
             <div className='post_click' onClick={handleClick}>
