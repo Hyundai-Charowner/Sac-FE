@@ -119,7 +119,7 @@ function RightNavi() {
                 <p className="box-header-text">이달의 열정 새싹</p>
             </div>
             <div className="box-body">
-                {hotSaccers && hotSaccers.user.map((hotsaccerObject, index) => (
+                {hotSaccers && hotSaccers.user && hotSaccers.user.length > 0 && hotSaccers.user.map((hotsaccerObject, index) => (
                     <div className="body-item" key={index}>
                         <p className="body-item-rank">{index + 1}</p>
                         <img src={hotsaccerObject.user_image} alt="ProfileImage" className="body-item-image" />
