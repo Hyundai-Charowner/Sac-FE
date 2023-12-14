@@ -1,11 +1,18 @@
-import React, { useState }from "react";
+import React, { useState, useEffect }from "react";
 import "../../../styles/RightNavi.css";
 import discordIcon from '../../../assets/image/discord.png';
 import customModalStyles from '../../../styles/Modal';
 import Modal from 'react-modal';
+import axiosInstance from "../../../utils/api.js";
 
 function RightNavi() {
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+    const [hotTopics, setHotTopics] = useState([]);
+
+    useEffect(() => {
+        fetchHotTopic();
+    }, []);
+
 
     const openEmailModal = () => {
         setIsEmailModalOpen(true);
@@ -13,6 +20,15 @@ function RightNavi() {
 
     const closeEmailModal = () => {
         setIsEmailModalOpen(false);
+    };
+
+    const fetchHotTopic = async () => {
+        try {
+            const response = await axiosInstance.get("/ranking/topic");
+            setHotTopics(response.data);
+        } catch (error) {
+            console.error('데이터 가져오기 실패:', error);
+        }
     };
 
     const handleCopyEmail = () => {
@@ -32,6 +48,39 @@ function RightNavi() {
         const discordText = "https://discord.gg/BtX6DYav";
         window.open(discordText, "_blank");
     }
+
+    const getIconForTopic = (topic) => {
+        switch (topic) {
+            case "프론트엔드":
+                return "🌈";
+            case "백엔드":
+                return "💻";
+            case "맛집":
+                return "🍔";
+            case "전자기기":
+                return "📱";
+            case "축구":
+                return "⚽️";
+            case "영화":
+                return "🎬";
+            case "건강":
+                return "🏋️‍♀️";
+            case "문화생활":
+                return "🎨";
+            case "뷰티":
+                return "💄";
+            case "음주":
+                return "🍺";
+            case "연애":
+                return "💕";
+            case "예능":
+                return "🤣";
+            case "드라마":
+                return "📺";
+            default:
+                return "🌕";
+        }
+    };
         
 
   return (
@@ -42,32 +91,13 @@ function RightNavi() {
                 <p className="box-header-text">트렌딩 토픽</p>
             </div>
             <div className="box-body">
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-
+                {hotTopics.map((topic, index) => (
+                    <div className="body-item" key={index}>
+                        <p className="body-item-rank">{index + 1}</p>
+                        <p className="body-item-icon">{getIconForTopic(topic)}</p>
+                        <p className="body-item-text">{topic}</p>
+                    </div>
+                ))} 
             </div>
         </div>
 

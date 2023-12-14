@@ -40,7 +40,7 @@ const WriteBody = () => {
 
         try {
             const response = await axiosInstance.post("/posts", {
-                board_id: 1,
+                board_id: 6,
                 post_head: title,
                 post_content: body
             });

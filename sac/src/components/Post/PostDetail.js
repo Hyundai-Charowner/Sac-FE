@@ -9,27 +9,28 @@ import { useEffect, useState } from 'react';
 const PostDetail = ({ postId }) => {
 
     const [post, setPost] = useState(null);
+    const [reply, setReply] = useState(null);
 
     useEffect(() => {
         const fetchPost = async () => {
             try {
                 const response = await axiosInstance.get(`/posts/${postId}`);
-                setPost(response.data);
-                console.log(response.data);
+                setPost(response.data.post);
+                setReply(response.data.reply);
             } catch (error) {
-                console.log(`/posts/${postId}`);
                 console.error('데이터 가져오기 실패:', error);
             }
         };
 
         fetchPost();
+
     }, [postId]);
 
     if (!post) {
         return <div>Loading...</div>;
     }
 
-    const { imageUrl, username, create_date, topic, title, content } = post;
+    const { imageUrl, username} = post;
 
     return (
         <div className='post-detail'>
@@ -37,7 +38,7 @@ const PostDetail = ({ postId }) => {
             <Body title={post.post_head} content={post.post_content} />
             <div className='divider-detail' />
             <PostReply />
-            <ReplyEdit />
+            <ReplyEdit postId={post.post_id}/>
         </div>
     );
 };
