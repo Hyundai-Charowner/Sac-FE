@@ -104,6 +104,10 @@
     margin-right: auto;
 }
 
+.markdown-editor {
+  margin-bottom: 2rem;
+}
+
 
 .markdown-editor.shake {
   animation: shake 0.2s;
