@@ -58,11 +58,13 @@ function Home() {
     };
 
     const mainDiv = document.querySelector(".main");
-    mainDiv.addEventListener("scroll", handleScroll);
 
-    return () => {
-      mainDiv.removeEventListener("scroll", handleScroll);
-    };
+    if (isLogin) {
+      mainDiv.addEventListener("scroll", handleScroll);
+      return () => {
+        mainDiv.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [loading]);
 
   useEffect(() => {
