@@ -8,9 +8,11 @@ import axiosInstance from "../../../utils/api.js";
 function RightNavi() {
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
     const [hotTopics, setHotTopics] = useState([]);
+    const [hotSaccers, setHotSaccers] = useState([]);
 
     useEffect(() => {
         fetchHotTopic();
+        fetchHotSaccers();
     }, []);
 
 
@@ -26,6 +28,15 @@ function RightNavi() {
         try {
             const response = await axiosInstance.get("/ranking/topic");
             setHotTopics(response.data);
+        } catch (error) {
+            console.error('데이터 가져오기 실패:', error);
+        }
+    };
+
+    const fetchHotSaccers = async () => {
+        try {
+            const response = await axiosInstance.get("/ranking/passion");
+            setHotSaccers(response.data);
         } catch (error) {
             console.error('데이터 가져오기 실패:', error);
         }
@@ -107,36 +118,13 @@ function RightNavi() {
                 <p className="box-header-text">이달의 열정 새싹</p>
             </div>
             <div className="box-body">
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-item">
-                    <p className="body-item-rank">1</p>
-                    <p className="body-item-icon">🌕</p>
-                    <p className="body-item-text">전체</p>
-                </div>
-                <div className="body-more-container">
-                    <button className="body-item-more">더보기</button>
-                </div>
-                
-
+                {hotSaccers.map((topic, index) => (
+                    <div className="body-item" key={index}>
+                        <p className="body-item-rank">{index + 1}</p>
+                        <p className="body-item-icon">{getIconForTopic(topic)}</p>
+                        <p className="body-item-text">{topic}</p>
+                    </div>
+                ))} 
             </div>
         </div>
 
