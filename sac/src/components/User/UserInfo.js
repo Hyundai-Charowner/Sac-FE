@@ -41,8 +41,8 @@ function UserInfo() {
 
     return (
         <div className="user-info-container">
-            <button className='user-button' onClick={handleButtonClick}>
-                <img src={defaultImage} alt="userImage" />
+            <button className='user-info-button' onClick={handleButtonClick}>
+                <img src={defaultImage} alt="userImage" className="user-info-image"/>
             </button>
 
             {isOverlayVisible && (

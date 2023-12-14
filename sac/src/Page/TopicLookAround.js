@@ -1,6 +1,7 @@
 import Header from "../components/Header/Header";
 import TileView from "../components/TopicLookAround/TileView";
 import "../styles/TopicLookAround.css";
+import React from "react";
 
 function TopicLookAround() {
   const boards = [
