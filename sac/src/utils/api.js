@@ -4,13 +4,12 @@ const instance = axios.create({
     baseURL: process.env.REACT_APP_HOST_NAME,
 });
 
-
 instance.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('jwtToken');
         try {
             if (token) {
-                config.headers.accessToken = `${token}`;
+                config.headers.accessToken = token;
             }
 
             return config;

@@ -66,7 +66,7 @@ function Header() {
             <div className="header-container">
                 <div className="header-left">
                     <a href='/'><img src={logo} alt="Logo" className="logo" /></a>
-                    <div className="search-container">
+                    <button className="search-container" onClick={goToMyTopic}>
                         <img src={searchIcon} alt="Search Icon" className="search-icon" />
                         <input
                             type="text"
@@ -75,7 +75,7 @@ function Header() {
                             placeholder="관심사 검색하기"
                             className="search-input"
                         />
-                    </div>
+                    </button>
                 </div>
                 <div className="header-right">
                     <div className="etc">

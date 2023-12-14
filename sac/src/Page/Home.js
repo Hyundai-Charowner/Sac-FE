@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Header from '../components/Header/Header';
 import LeftNavi from '../components/Navi/LeftNavi/LeftNavi';
@@ -8,9 +8,11 @@ import PostButton from '../components/Post/PostButton';
 import PostDetail from '../components/Post/PostDetail';
 import '../styles/Home.css';
 import customModalStyles from '../styles/Modal';
+import axiosInstance from "../utils/api.js";
 
 function Home() {
   const [isPostDetailOpen, setIsPostDetailOpen] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const openPostDetailModal = () => {
     setIsPostDetailOpen(true);
@@ -19,6 +21,24 @@ function Home() {
   const closePostDetailModal = () => {
     setIsPostDetailOpen(false);
   };
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        // Replace the URL with your actual API endpoint
+        const response = await axiosInstance.post(`/posts/page`,
+        {
+          pageNum: 1
+        });
+
+        setPosts(response.data.posts);
+      } catch (error) {
+        console.error('데이터 가져오기 실패:', error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <div className="App">
@@ -30,24 +50,19 @@ function Home() {
           <LeftNavi />
         </div>
         <div className="main">
-            <div className='post-button-container'>
-                <PostButton />
-            </div>
-            <Post onClick={openPostDetailModal} />
-            <Post onClick={openPostDetailModal} />
-            <Post onClick={openPostDetailModal} />
-            <Post onClick={openPostDetailModal} />
-            <Post onClick={openPostDetailModal} />
-            <Post onClick={openPostDetailModal} />
-            <Post onClick={openPostDetailModal} />
-            <Post onClick={openPostDetailModal} />
-            <Modal
-                isOpen={isPostDetailOpen}
-                onRequestClose={closePostDetailModal}
-                style={customModalStyles}
-            >
-                <PostDetail />
-            </Modal>
+          <div className='post-button-container'>
+            <PostButton />
+          </div>
+          {posts.map((post) => (
+            <Post key={post.post_id} onClick={openPostDetailModal} post={post} />
+          ))}
+          <Modal
+            isOpen={isPostDetailOpen}
+            onRequestClose={closePostDetailModal}
+            style={customModalStyles}
+          >
+            <PostDetail />
+          </Modal>
         </div>
         <div className='navi'>
           <RightNavi />
