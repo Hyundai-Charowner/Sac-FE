@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal';
-import Header from '../components/Header/Header';
-import LeftNavi from '../components/Navi/LeftNavi/LeftNavi';
-import RightNavi from '../components/Navi/RightNavi/RightNavi';
-import Post from '../components/Post/Post';
-import PostButton from '../components/Post/PostButton';
-import PostDetail from '../components/Post/PostDetail';
-import '../styles/Home.css';
-import customModalStyles from '../styles/Modal';
+import React, { useState, useEffect } from "react";
+import Modal from "react-modal";
+import Header from "../components/Header/Header";
+import LeftNavi from "../components/Navi/LeftNavi/LeftNavi";
+import RightNavi from "../components/Navi/RightNavi/RightNavi";
+import Post from "../components/Post/Post";
+import PostButton from "../components/Post/PostButton";
+import PostDetail from "../components/Post/PostDetail";
+import "../styles/Home.css";
+import customModalStyles from "../styles/Modal";
 import axiosInstance from "../utils/api.js";
+import OnBoarding from "../components/OnBoarding/OnBoarding.js";
 
 function Home() {
   const [isPostDetailOpen, setIsPostDetailOpen] = useState(false);
@@ -16,6 +17,8 @@ function Home() {
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
+
+  const [isLogin, setIsLogin] = useState(false);
 
   const openPostDetailModal = (postId) => {
     setSelectedPostId(postId);
@@ -30,13 +33,13 @@ function Home() {
     try {
       setLoading(true);
       const response = await axiosInstance.post(`/posts/page`, {
-        pageNum: pageNum
+        pageNum: pageNum,
       });
 
       setPosts((prevPosts) => [...prevPosts, ...response.data.posts]);
       setPageNum((prevPageNum) => prevPageNum + 1);
     } catch (error) {
-      console.error('데이터 가져오기 실패:', error);
+      console.error("데이터 가져오기 실패:", error);
     } finally {
       setLoading(false);
     }
@@ -44,7 +47,7 @@ function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const mainDiv = document.querySelector('.main');
+      const mainDiv = document.querySelector(".main");
       const scrollTop = mainDiv.scrollTop;
       const scrollHeight = mainDiv.scrollHeight;
       const clientHeight = mainDiv.clientHeight;
@@ -54,11 +57,11 @@ function Home() {
       }
     };
 
-    const mainDiv = document.querySelector('.main');
-    mainDiv.addEventListener('scroll', handleScroll);
+    const mainDiv = document.querySelector(".main");
+    mainDiv.addEventListener("scroll", handleScroll);
 
     return () => {
-      mainDiv.removeEventListener('scroll', handleScroll);
+      mainDiv.removeEventListener("scroll", handleScroll);
     };
   }, [loading]);
 
@@ -67,31 +70,46 @@ function Home() {
     fetchMorePosts();
   }, []);
 
+  useEffect(() => {
+    const loginSession = localStorage.getItem("jwtToken");
+    setIsLogin(!!loginSession);
+  }, []);
+
   return (
     <div className="App">
       <div className="header">
         <Header />
       </div>
       <div className="body">
-        <div className='navi'>
+        <div className="navi">
           <LeftNavi />
         </div>
-        <div className="main">
-          <div className='post-button-container'>
-            <PostButton />
+
+        {isLogin ? (
+          <div className="main">
+            <div className="post-button-container">
+              <PostButton />
+            </div>
+            {posts.map((post) => (
+              <Post
+                key={post.post_id}
+                onClick={() => openPostDetailModal(post.post_id)}
+                post={post}
+              />
+            ))}
+            <Modal
+              isOpen={isPostDetailOpen}
+              onRequestClose={closePostDetailModal}
+              style={customModalStyles}
+            >
+              <PostDetail postId={selectedPostId} />
+            </Modal>
           </div>
-          {posts.map((post) => (
-            <Post key={post.post_id} onClick={() => openPostDetailModal(post.post_id)} post={post} />
-          ))}
-          <Modal
-            isOpen={isPostDetailOpen}
-            onRequestClose={closePostDetailModal}
-            style={customModalStyles}
-          >
-            <PostDetail postId={selectedPostId} />
-          </Modal>
-        </div>
-        <div className='navi'>
+        ) : (
+          <OnBoarding />
+        )}
+
+        <div className="navi">
           <RightNavi />
         </div>
       </div>
