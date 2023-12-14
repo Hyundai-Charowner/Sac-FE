@@ -13,7 +13,7 @@ const Footer = ({ commentCount, initialHeartCount, viewsCount, postId}) => {
 
     const likePost = async (postId) => {
         try {
-            await axiosInstance.post(`/posts/like2`, {
+            await axiosInstance.post(`/posts/like`, {
                 post_id: postId
             });
         } catch (error) {
