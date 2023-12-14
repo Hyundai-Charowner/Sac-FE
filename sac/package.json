@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@toast-ui/react-editor": "^3.2.3",
     "axios": "^1.6.2",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.16.1",
@@ -18,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start" : "set \"GENERATE_SOURCEMAP=false\" && react-scripts start",
+    "start": "set \"GENERATE_SOURCEMAP=false\" && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -46,6 +47,5 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.5"
   },
-
-  "proxy": "https://sac.monster/api"
+  "proxy": "https://sac.monster"
 }
