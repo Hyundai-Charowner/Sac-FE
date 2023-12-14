@@ -13,8 +13,12 @@ import axiosInstance from "../utils/api.js";
 function Home() {
   const [isPostDetailOpen, setIsPostDetailOpen] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [selectedPostId, setSelectedPostId] = useState(null);
 
-  const openPostDetailModal = () => {
+  const openPostDetailModal = (postId) => {
+    setSelectedPostId(postId);
     setIsPostDetailOpen(true);
   };
 
@@ -22,22 +26,45 @@ function Home() {
     setIsPostDetailOpen(false);
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        // Replace the URL with your actual API endpoint
-        const response = await axiosInstance.post(`/posts/page`,
-        {
-          pageNum: 1
-        });
+  const fetchMorePosts = async () => {
+    try {
+      setLoading(true);
+      const response = await axiosInstance.post(`/posts/page`, {
+        pageNum: pageNum
+      });
 
-        setPosts(response.data.posts);
-      } catch (error) {
-        console.error('데이터 가져오기 실패:', error);
+      setPosts((prevPosts) => [...prevPosts, ...response.data.posts]);
+      setPageNum((prevPageNum) => prevPageNum + 1);
+    } catch (error) {
+      console.error('데이터 가져오기 실패:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const mainDiv = document.querySelector('.main');
+      const scrollTop = mainDiv.scrollTop;
+      const scrollHeight = mainDiv.scrollHeight;
+      const clientHeight = mainDiv.clientHeight;
+
+      if (scrollTop + clientHeight + 20 >= scrollHeight && !loading) {
+        fetchMorePosts();
       }
     };
 
-    fetchPosts();
+    const mainDiv = document.querySelector('.main');
+    mainDiv.addEventListener('scroll', handleScroll);
+
+    return () => {
+      mainDiv.removeEventListener('scroll', handleScroll);
+    };
+  }, [loading]);
+
+  useEffect(() => {
+    // Initial load of posts
+    fetchMorePosts();
   }, []);
 
   return (
@@ -54,14 +81,14 @@ function Home() {
             <PostButton />
           </div>
           {posts.map((post) => (
-            <Post key={post.post_id} onClick={openPostDetailModal} post={post} />
+            <Post key={post.post_id} onClick={() => openPostDetailModal(post.post_id)} post={post} />
           ))}
           <Modal
             isOpen={isPostDetailOpen}
             onRequestClose={closePostDetailModal}
             style={customModalStyles}
           >
-            <PostDetail />
+            <PostDetail postId={selectedPostId} />
           </Modal>
         </div>
         <div className='navi'>

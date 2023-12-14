@@ -5,12 +5,7 @@ import '../../styles/MyPageBody.css';
 function MyPost() {
     return (
         <div className="my-body-post">
-            <div className="my-post-content">
-                <Post />
-            </div>
-            <div className="my-post-content">
-                <Post />
-            </div>
+            {/* // Post 컴포넌트를 사용하여 게시글을 불러옵니다. */}
         </div>
     );
 }

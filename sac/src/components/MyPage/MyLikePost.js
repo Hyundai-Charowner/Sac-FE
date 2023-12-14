@@ -5,12 +5,7 @@ import '../../styles/MyPageBody.css';
 function MyLikePost() {
     return (
         <div className="my-body-post">
-            <div className="my-post-content">
-                <Post />
-            </div>
-            <div className="my-post-content">
-                <Post />
-            </div>
+            {/* 포스트 넣어줘야 함 */}
         </div>
     );
 }
