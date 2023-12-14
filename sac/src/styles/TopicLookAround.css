@@ -1,0 +1,48 @@
+/* 추가된 CSS 부분 */
+.header-look {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .look-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .body {
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .look-body {
+    display: flex;
+    max-height: calc(100vh - 104px);
+    margin-top: 52px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0.1rem;
+  }
+  
+  .body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .body-title {
+    font-size: 2.2rem;
+    margin-left: 1.2rem;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+  }
+  
+  .body-content {
+    font-size: 1.2rem;
+    margin-left: 1.2rem;
+    color: #707070;
+    margin-bottom: 2rem;
+  }
+  

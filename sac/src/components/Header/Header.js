@@ -1,21 +1,24 @@
-import logo from '../../assets/image/logo.png';
+// Header.js 파일
+
 import React, { useState, useEffect } from 'react';
-import searchIcon from '../../assets/image/search.png';
-import '../../styles/Header.css';
-import UserInfo from '../User/UserInfo';
-import Modal from 'react-modal'; // 모달 라이브러리 import
+import Modal from 'react-modal';
 import LogIn from '../../components/Login/Login';
 import customModalStyles from '../../styles/Modal';
+import ModalCancelButton from '../commons/ModalCancelButton';
+import UserInfo from '../User/UserInfo';
+import logo from '../../assets/image/logo.png';
+import searchIcon from '../../assets/image/search.png';
+import '../../styles/Header.css';
 
 function Header() {
     const [searchText, setSearchText] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isMyTopicModalOpen, setIsMyTopicModalOpen] = useState(false);
 
     useEffect(() => {
-        // localStorage에서 loginSession 확인
         const loginSession = localStorage.getItem('jwtToken');
-        setIsLoggedIn(!!loginSession); // loginSession이 존재하면 true, 아니면 false로 설정
+        setIsLoggedIn(!!loginSession);
     }, []);
 
     const handleSearchChange = (event) => {
@@ -29,6 +32,32 @@ function Header() {
     const closeLoginModal = () => {
         setIsLoginModalOpen(false);
     };
+
+    const openMyTopicModal = () => {
+        setIsMyTopicModalOpen(true);
+    };
+
+    const closeMyTopicModal = () => {
+        setIsMyTopicModalOpen(false);
+    };
+
+    const goToIntroduce = () => {
+        const discordText = "https://github.com/Hyundai-Charowner";
+        window.open(discordText, "_blank");
+    };
+
+    const goToTopicLookAround = () => {
+        window.location.href = '/topics';
+    }
+
+    const goToMyTopic = () => {
+        openMyTopicModal();
+    }
+
+    const goToSesacHome = () => {
+        const discordText = "https://sesac.seoul.kr/common/greeting.do";
+        window.open(discordText, "_blank");
+    }
 
     return (
         <div className="header">
@@ -48,13 +77,13 @@ function Header() {
                 </div>
                 <div className="header-right">
                     <div className="etc">
-                        <p className='etc-work'>사이트 소개</p>
-                        <p className='etc-work'>토픽 둘러보기</p>
-                        <p className='etc-work'>MY 토픽</p>
-                        <p className='etc-work'>새싹 홈</p>
+                        <button className='etc-work' onClick={goToIntroduce}>사이트 소개</button>
+                        <button className='etc-work' onClick={goToTopicLookAround}>토픽 둘러보기</button>
+                        <button className='etc-work' onClick={goToMyTopic}>MY 토픽</button>
+                        <button className='etc-work' onClick={goToSesacHome}>새싹 홈</button>
                     </div>
                     {isLoggedIn ? (
-                        <UserInfo />
+                        <UserInfo className="user-info"/>
                     ) : (
                         <button className='login-button' onClick={openLoginModal}>로그인</button>
                     )}
@@ -67,6 +96,20 @@ function Header() {
                 style={customModalStyles}
             >
                 <LogIn />
+                <div className='close-modal'>
+                    <ModalCancelButton onClick={closeLoginModal} />
+                </div>
+            </Modal>
+
+            <Modal
+                isOpen={isMyTopicModalOpen}
+                onRequestClose={closeMyTopicModal}
+                style={customModalStyles}
+            >   
+                <div className='close-modal'>
+                    <div className='close-modal-text'>추후 구현 예정😥</div>
+                    <ModalCancelButton onClick={closeMyTopicModal} />
+                </div>
             </Modal>
         </div>
     );

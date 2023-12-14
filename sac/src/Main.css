@@ -28,6 +28,7 @@
 
 body {
   line-height: 1;
+
   background-color: #F2F2F2;
   /* 폰트 패밀리를 지정합니다. */
   font-family:
@@ -61,4 +62,5 @@ body {
   margin: 0 auto;
   align-items: center;
   overflow-y: auto;
+  padding-bottom: 1rem;
 }
