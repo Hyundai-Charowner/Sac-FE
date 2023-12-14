@@ -1,21 +1,20 @@
 import React from "react";
-import userDefaultImage from '../../assets/image/userDefault.png';
 import '../../styles/PostReply.css';
 
-const Reply = () => {
+const Reply = ({reply}) => {
     return (
         <div className="reply">
             <div className="reply-header">
                 <div className="reply-image">
-                    <img src={userDefaultImage} alt='User' />
+                    <img src={reply.user_image} alt='User' style={{ borderRadius: '50%' }}/>
                 </div>
                 <div className="reply-info">
-                    <div className="reply-username">유저네임</div>
-                    <div className="reply-timestamp">타임스탬프</div>
+                    <div className="reply-username">{reply.user_name}</div>
+                    <div className="reply-timestamp">{reply.created_date}</div>
                 </div>
             </div>
             <div className="reply-body">
-                <div className="reply-content-text">댓글 내용123123123</div>
+                <div className="reply-content-text">{reply.reply_content}</div>
             </div>
         </div>
     );

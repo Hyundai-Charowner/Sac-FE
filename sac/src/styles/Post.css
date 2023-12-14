@@ -109,7 +109,15 @@
 
 .post-detail {
     width: 60rem;
+    max-height: 80vh;
     
+    overflow-y: scroll; /* 세로 스크롤을 허용 */
+    scrollbar-width: none; /* Firefox에 스크롤바 감추기 */
+    -ms-overflow-style: none; /* IE/Edge에 스크롤바 감추기 */
+}
+
+.post-detail::-webkit-scrollbar {
+    display: none; /* Chrome/Safari에 스크롤바 감추기 */
 }
 
 .post-contents {

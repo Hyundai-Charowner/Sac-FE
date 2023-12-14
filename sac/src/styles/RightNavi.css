@@ -142,3 +142,11 @@
     box-shadow: 0 0 0 3px #B5A4E7;
     cursor: pointer;
 }
+
+.body-item-image {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
