@@ -9,12 +9,14 @@ import UserInfo from '../User/UserInfo';
 import logo from '../../assets/image/logo.png';
 import searchIcon from '../../assets/image/search.png';
 import '../../styles/Header.css';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
     const [searchText, setSearchText] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isMyTopicModalOpen, setIsMyTopicModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loginSession = localStorage.getItem('jwtToken');
@@ -47,7 +49,7 @@ function Header() {
     };
 
     const goToTopicLookAround = () => {
-        window.location.href = '/topics';
+        navigate('/topics');
     }
 
     const goToMyTopic = () => {
