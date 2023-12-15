@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import '../../styles/MyPage.css';
 import TopicItem from "../commons/TopicItem";
 import userDefaultImage from '../../assets/image/userDefault.png';
-
-const topics = ["프론트엔드", "백엔드", "맛집", "전자기기", "축구", "영화", "건강", "문화생활", "뷰티", "음주", "연애", "예능", "드라마"];
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../utils/api.js";
 
 function MyHead() {
     const userImage = ""; // 받아온 userImage 변수
     const imageSrc = userImage ? userImage : userDefaultImage; // userImage가 없을 때 userDefaultImage로 변경
+    const navigate = useNavigate();
+    const [likeTopics, setLikeTopics] = useState(null);
+
+    const handleMoveToTopic = () => {
+        navigate("/topics");
+    }
+
+    const fetchLikeTopic = async () => {
+        try {
+            const response = await axiosInstance.get("/user/boards");
+            setLikeTopics(response.data.likeList);
+        } catch (error) {
+            console.error('Failed to fetch liked topics:', error);
+            setLikeTopics([]);
+        }
+    };
+
+    useEffect(() => {
+        fetchLikeTopic();
+    }, []);
+
 
     return (
         <div className="my-navi">
@@ -23,12 +44,15 @@ function MyHead() {
             <div className="my-navi-body">
                 <div className="my-topic-title">
                     MY 토픽
-                    <button className="my-topic-edit">편집</button>    
+                    <button className="my-topic-edit" onClick={handleMoveToTopic}>편집</button>    
                 </div>
                 <div className="my-topic-list">
-                    {topics.map((topic, index) => (
-                        <TopicItem key={index} topic={topic} />
-                    ))}
+                {likeTopics && likeTopics.length > 0 && likeTopics.map((topic, index) => (
+                    <TopicItem
+                        key={index}
+                        topic={topic}
+                    />
+                ))}
                 </div>
             </div>
         </div>
