@@ -7,7 +7,7 @@ import '../../styles/Write.css';
 import { Editor } from '@toast-ui/react-editor';
 import { useNavigate } from "react-router-dom";
 
-const WriteBody = () => {
+const WriteBody = (postId) => {
     const editorRef = useRef(null);
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');

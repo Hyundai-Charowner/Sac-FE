@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import commentImage from '../../assets/image/comment.png';
 import heartTrueImage from '../../assets/image/heartTrue.png';
 import heartFalseImage from '../../assets/image/heartFalse.png';
@@ -7,15 +7,20 @@ import viewsImage from '../../assets/image/views.png';
 import '../../styles/Post.css';
 import axiosInstance from "../../utils/api.js";
 
-const Footer = ({ commentCount, initialHeartCount, viewsCount, postId}) => {
+const Footer = ({ commentCount, initialHeartCount, viewsCount, postId, isLiked }) => {
     const [isHeartClicked, setIsHeartClicked] = useState(false);
     const [heartCount, setHeartCount] = useState(initialHeartCount);
+
+    useEffect(() => {
+        setIsHeartClicked(isLiked === 1);
+    }, [isLiked]);
 
     const likePost = async (postId) => {
         try {
             await axiosInstance.post(`/posts/like`, {
                 post_id: postId
             });
+            setHeartCount(prevHeartCount => prevHeartCount + 1);
         } catch (error) {
             console.error("Failed to fetch like data:", error);
         }
@@ -28,26 +33,20 @@ const Footer = ({ commentCount, initialHeartCount, viewsCount, postId}) => {
                     post_id: postId
                 }
             });
+            setHeartCount(prevHeartCount => prevHeartCount - 1);
         } catch (error) {
             console.error("Failed to fetch like data:", error);
         }
     };
-    
-
 
     const handleHeartClick = () => {
         if (isHeartClicked) {
             unLikePost(postId);
-        }
-        else {
+        } else {
             likePost(postId);
         }
-            
         setIsHeartClicked(!isHeartClicked);
-        setHeartCount(prevHeartCount => isHeartClicked ? prevHeartCount - 1 : prevHeartCount + 1);
     };
-
-    
 
     return (
         <div className='post-footer'>

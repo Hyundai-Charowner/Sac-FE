@@ -11,7 +11,7 @@ const Post = ({ post, onClick }) => {
         onClick(post.post_id);
       }
     };
-
+    
     if (post.post_id === 1) {
       post.board_category = "프론트엔드"
     } else if (post.board_id === 2) {
@@ -46,7 +46,8 @@ const Post = ({ post, onClick }) => {
           <Header imageUrl={post.user_image} username={post.user_name} timestamp={post.created_date} topic={post.board_category} />
           <Body title={post.post_head} content={post.post_content} />
         </div>
-        <Footer commentCount={post.reply_count} initialHeartCount={post.post_likes} viewsCount={post.post_count} postId={post.post_id}/>
+        <Footer commentCount={post.reply_count} initialHeartCount={post.post_likes} viewsCount={post.post_count} postId={post.post_id} isLiked={post.isLike
+}/>
       </div>
     );
 };
