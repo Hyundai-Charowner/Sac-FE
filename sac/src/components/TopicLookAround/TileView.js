@@ -6,37 +6,51 @@ const TileView = ({ boards }) => {
   const [subscribed, setSubscribed] = useState([]);
 
   useEffect(() => {
-    const fetchLikeList = async () => {
-      try {
-        const response = await axiosInstance.get("user/boards");
-        const likeList = response.data;
-        let stack = 0;
+    // Initialize the subscribed state based on the liked property of boards
+    setSubscribed(boards.map((board) => board.liked || false));
+    console.log(boards);
+  }, [boards]);
 
-        // Update subscription state based on the presence of boardId in likeList
-        const updatedSubscribed = boards.map((board) =>
-          likeList.hasOwnProperty(board.boardId),
-          stack++
-        );
+  const handleSubscription = async (index) => {
+    if (subscribed[index]) {
+      // If already subscribed, call unLikeBoard
+      await unLikeBoard(index);
+    } else {
+      // If not subscribed, call likeBoard
+      await likeBoard(index);
+    }
+  };
 
-        console.log("likeList:", likeList);
-        console.log("stack:", stack);
+  const likeBoard = async (index) => {
+    try {
+      await axiosInstance.post("/user/boards", { board_id: index + 1 });
 
-        setSubscribed(updatedSubscribed);
-      } catch (error) {
-        console.error("Failed to fetch likeList data:", error);
-      }
-    };
+      setSubscribed((prevSubscribed) => {
+        const newSubscribed = [...prevSubscribed];
+        newSubscribed[index] = true;
+        return newSubscribed;
+      });
+    } catch (error) {
+      console.error("Failed to fetch likeList data:", error);
+    }
+  };
 
-    fetchLikeList();
-  }, [boards]); // Run the effect when boards change
+  const unLikeBoard = async (index) => {
+    try {
+      await axiosInstance.delete(`/user/boards/${index + 1}`, {
+        data: {
+          post_id: index + 1,
+        },
+      });
 
-
-  const handleSubscription = (index) => {
-    setSubscribed((prevSubscribed) => {
-      const newSubscribed = [...prevSubscribed];
-      newSubscribed[index] = !newSubscribed[index]; // Toggle subscription status
-      return newSubscribed;
-    });
+      setSubscribed((prevSubscribed) => {
+        const newSubscribed = [...prevSubscribed];
+        newSubscribed[index] = false;
+        return newSubscribed;
+      });
+    } catch (error) {
+      console.error("Failed to fetch likeList data:", error);
+    }
   };
 
   return (

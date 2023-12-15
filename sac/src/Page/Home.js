@@ -53,7 +53,9 @@ function Home() {
 
   useEffect(() => {
     setPosts([]); // Clear posts when selectedTopic changes
-    fetchPosts(selectedTopic);
+    if (selectedTopic !== "전체") {
+      fetchPosts(selectedTopic);
+    }
   }, [selectedTopic]);
 
   const handleScroll = () => {
