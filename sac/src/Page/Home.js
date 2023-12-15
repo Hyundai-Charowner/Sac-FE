@@ -79,10 +79,16 @@ function Home() {
   }, [loading, selectedTopic, pageNum]);
 
   useEffect(() => {
-    if (selectedTopic === "전체"){
+    if (!localStorage.getItem('jwtToken')) {
+      // If jwtToken doesn't exist, show a message in the main container
+      const mainDiv = document.querySelector('.main');
+      mainDiv.innerHTML = '<div class="login-message">로그인 이후 이용해 주세요.</div>';
+    } else if (selectedTopic === '전체') {
       fetchMorePosts();
-    } 
+    }
   }, [selectedTopic]);
+
+  // ... (rest of the component)
 
   return (
     <div className="App">
@@ -94,19 +100,24 @@ function Home() {
           <LeftNavi selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
         </div>
         <div className="main">
-          <div className='post-button-container'>
-            <PostButton />
-          </div>
-          {posts.map((post) => (
-            <Post key={post.post_id} onClick={() => openPostDetailModal(post.post_id)} post={post} />
-          ))}
-          <Modal
-            isOpen={isPostDetailOpen}
-            onRequestClose={closePostDetailModal}
-            style={customModalStyles}
-          >
-            <PostDetail postId={selectedPostId} />
-          </Modal>
+          {/* Render posts only if jwtToken exists */}
+          {localStorage.getItem('jwtToken') && (
+            <>
+              <div className='post-button-container'>
+                <PostButton />
+              </div>
+              {posts.map((post) => (
+                <Post key={post.post_id} onClick={() => openPostDetailModal(post.post_id)} post={post} />
+              ))}
+              <Modal
+                isOpen={isPostDetailOpen}
+                onRequestClose={closePostDetailModal}
+                style={customModalStyles}
+              >
+                <PostDetail postId={selectedPostId} />
+              </Modal>
+            </>
+          )}
         </div>
         <div className='navi'>
           <RightNavi />
