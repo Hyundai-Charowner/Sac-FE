@@ -17,7 +17,7 @@ function PostButton() {
             <img src={userDefaultImage} alt="User Default" className="user-image" />
             <div className="write-container" onClick={handleButtonClick}>
                 <img src={writeIcon} alt="Write Icon" className="write-icon" />
-                <p className='write-text'>{`${username ? username : 'guest'}님, 무슨 이야기의 싹을 피우실 건가요?`}</p>
+                <p className='write-text'>{`${username ? username : '이승민'}님, 무슨 이야기의 싹을 피우실 건가요?`}</p>
             </div>
         </div>
     );
